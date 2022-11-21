@@ -1,0 +1,96 @@
+/* .gift .forAmount {
+    width: 50%;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+} */
+
+.gift .forAmountBg {
+  max-width: 350px;
+  min-width: 350px;
+}
+
+.gift .forAmountImgDiv {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.gift .forAmount img {
+  width: 290px;
+}
+
+.gift .forAmountBg {
+  box-shadow: 20px 10px 20px 4px rgba(26, 30, 37, 0.18),
+    0 0 6px 0 rgba(26, 30, 37, 0.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.gift .forAmountText {
+  /* margin-bottom: 25px; */
+  padding: 10px 5px;
+  border-top: 1px solid var(--lightgray);
+  text-align: center;
+}
+
+.gift .forAmountTextChangeBtn {
+  color: var(--primary);
+  text-decoration: underline;
+  padding: 5px 0;
+}
+
+.gift .forAmountTextChangeBtnDiv {
+  display: none;
+  padding: 15px;
+  justify-content: space-evenly;
+}
+
+.gift .forAmountTextChangeBtnInput {
+  text-align: center;
+  padding-right: 10px;
+  width: 45%;
+}
+
+/* 
+.gift .btn {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px 20px;
+    min-width: 80px;
+    height: 20px;
+    border-radius: 6px;
+    text-align: center;
+} */
+
+.gift .forAmountTextChangeBtnConfirmation {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .gift .preview {
+    padding: 10% 0 5%;
+  }
+
+  .gift .forAmount .forAmountBg {
+    min-width: unset;
+  }
+
+  .gift .btnDiv {
+    flex-direction: column;
+  }
+
+  .gift .payAmount {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .gift .btnDiv .payBtn {
+    width: 100%;
+  }
+
+  .gift .forAmount img {
+    width: 230px;
+  }
+}

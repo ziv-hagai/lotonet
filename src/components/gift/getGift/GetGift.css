@@ -1,0 +1,84 @@
+.getGift {
+  background-image: url(../../../assets/images/giftcard.jpg);
+  background-size: cover;
+  background-position: bottom;
+  height: 100vh;
+}
+
+.getGift .getGiftForm {
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  top: 15%;
+  left: 10%;
+  background: white;
+  padding: 3%;
+  border-radius: 35px;
+  text-align: center;
+  max-width: unset;
+}
+
+.getGift .getGiftFormGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 7%;
+}
+
+.getGift label {
+  font-size: 150%;
+  padding-bottom: 4%;
+}
+
+.getGift .getGiftForm input {
+  height: 20%;
+  font-size: 150%;
+  border-radius: 15px;
+  text-align: center;
+  width: 85%;
+}
+
+.getGift .getGiftForm button {
+  width: 85%;
+  font-size: 22px;
+}
+
+@media only screen and (max-width: 700px) {
+  .getGift .getGiftForm {
+    position: absolute;
+    width: 90%;
+    height: 38%;
+    top: 5%;
+    left: 0;
+    background: white;
+    padding: 10% 3%;
+    border-radius: 35px;
+    text-align: center;
+    margin: 0 5%;
+  }
+
+  .getGift .getGiftFormGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 13%;
+  }
+
+  .getGift label {
+    font-size: 95%;
+    padding-bottom: 7%;
+  }
+
+  .getGift .getGiftForm input {
+    height: 20%;
+    font-size: 95%;
+    border-radius: 15px;
+    text-align: center;
+    width: 85%;
+  }
+
+  .getGift .getGiftForm button {
+    width: 85%;
+    font-size: 20px;
+  }
+}

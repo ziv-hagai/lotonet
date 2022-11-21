@@ -1,0 +1,325 @@
+.settingsTitle {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.settingsTitle svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.settings .btnEdit {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  color: #000;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.settingsList {
+  padding: 15px 0;
+}
+
+.settingsListItem {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settingsListItem-heading {
+  display: flex;
+  align-items: center;
+}
+
+.settingsListItem-title {
+  font-size: 14px;
+  line-height: 22px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.settingsListItem-subtitle {
+  font-size: 14px;
+  line-height: 22px;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.settingsListItem-icon {
+  height: 38px;
+  width: 38px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+
+.settingsListItem-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.settingsListItem-img svg {
+  width: 16px;
+  height: 16px;
+  fill: #000;
+}
+
+.settings .userBlock {
+  padding: 20px 0;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.settings .userBlock-img {
+  width: 170px;
+  height: 170px;
+  margin-right: 15px;
+  box-shadow: 0px 1px 10px 0px rgb(0 0 0 / 8%);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.settings .userBlock-img img {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+}
+
+.userBlock-title {
+  font-size: 26px;
+  line-height: 34px;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.userBlock-subTitle,
+.userBlock-subText {
+  font-size: 14px;
+  line-height: 22px;
+  color: #888;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+/* .pageHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.pageHead-title {
+    font-size: 18px;
+    line-height: 26px;
+    color: #666;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.pageHead-title svg {
+    height: 26px;
+    width: 26px;
+    margin-right: 12px;
+}
+.pageHead-Btn {
+    padding: 0 !important;
+    background-color: transparent !important;
+    text-transform: capitalize !important;
+    font-size: 14px !important;
+    color: #888 !important;
+}
+.userMainHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.userMainHead-btn {
+    background-color: #f5f5f5 !important;
+    padding: 6px 15px !important;
+    border-radius: 6px !important;
+    text-transform: capitalize !important;
+    line-height: 20px !important;
+    font-size: 14px !important;
+    color: #888 !important;
+    margin-top: 22px !important;
+}
+.userMainHead-Info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.userMainHead-image {
+    height: 110px;
+    width: 110px;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    margin-right: 12px;
+}
+.userMainHead-image img {
+    width: auto;
+    height: 100%;
+}
+.userMainHead-title {
+    font-size: 26px;
+    line-height: 34px;
+    color: #000;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.userMainHead-subTitle {
+    font-size: 14px;
+    line-height: 22px;
+    color: #888;
+    font-weight: 400;
+    margin: 0;
+}
+.userMainHead-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: #888;
+    font-weight: 400;
+    margin: 0;
+}
+.progressBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.progressBox-icon svg {
+    height: 50px;
+    width: 50px;
+    fill: var(--primary);
+}
+.progressBox-price {
+    color: #284b75;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+.progressBox-title {
+    color: #7192bb;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.progressBox-updatePrice {
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+.iconList {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+    gap: 15px;
+    display: grid;
+    margin-bottom: 22px;
+}
+.iconListBox {
+    background: #f5f5f5;
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+.iconListBox-img {
+    margin-right: 8px;
+}
+.iconListBox svg {
+    height: 60px;
+    width: 60px;
+    fill: var(--primary);
+}
+.iconListBox-title {
+    color: #444;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+.graphBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    padding: 30px 18px;
+    margin-bottom: 22px;
+    box-shadow: 0px 0px 15px 0px rgb(0 0 0 / 12%);
+}
+.graphBlock-Btn {
+    background-color: #f5f5f5 !important;
+    padding: 10px 15px !important;
+    border-radius: 6px !important;
+    text-transform: capitalize !important;
+    line-height: 20px !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    width: 30%;
+}
+.graphBlock-list {
+    display: flex;
+    width: 60%;
+}
+.graphBox {
+    flex: 1 0 0;
+    margin-right: 10px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+.graphBox svg {
+    height: 40px;
+    width: 40px;
+    fill: var(--primary);
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 767px) { 
+    .iconList {
+        grid-template-columns: 1fr 1fr;
+    }
+    .graphBlock {
+        flex-direction: column;
+    }
+    .graphBlock-list {
+        width: 100%;
+    }
+    .graphBlock-Btn {
+        width: 100%;
+        max-width: 270px;
+        margin-top: 25px !important;
+    }
+} */

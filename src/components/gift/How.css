@@ -1,0 +1,41 @@
+.date {
+  display: none;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.person > *,
+.date > *,
+.buttons > *,
+.form-check > * {
+  margin: 2% !important;
+}
+
+.add,
+.approve {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#plus,
+#minus,
+#approve {
+  background: var(--lightgray) !important;
+  min-width: 40px;
+}
+
+.when > * {
+  width: 45%;
+}
+
+.gift .excelImg {
+  width: 23px;
+  margin-left: 10px;
+  border-radius: 0;
+  box-shadow: unset;
+}

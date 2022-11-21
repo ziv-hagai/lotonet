@@ -1,0 +1,38 @@
+/* .gift .for {
+    display: flex;
+    padding: 20px;
+} */
+
+.gift .forWho {
+  width: 50%;
+  padding: 5px;
+}
+
+.gift .forWhoInputs {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+}
+
+.gift .inputLabel {
+  margin-bottom: 10px;
+}
+
+.gift .forWhoInputsName {
+  height: 25px;
+  width: 50%;
+}
+
+.gift .forWhoInputsGreeting {
+  height: 100px;
+  width: 90%;
+}
+
+.gift .forWhoBtn {
+  font-size: 15px;
+}
+
+.bless {
+  height: 100px;
+}

@@ -1,0 +1,88 @@
+.menuSearch {
+  position: absolute;
+  top: 65px;
+  width: 50%;
+  min-width: 320px;
+  height: 80vh;
+  border: 1px solid;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  overflow-y: scroll;
+  text-align: right;
+  display: none;
+  z-index: 10;
+}
+
+.menuSearchSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuSearchSectionLink {
+  width: 100%;
+  height: 45px;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 45px;
+  padding: 0 70px;
+  /* cursor: pointer; */
+}
+
+.menuSearchSectionLink:hover {
+  /* font-weight: bold; */
+}
+
+.MenuSearchItemsDiv {
+  padding: 11px 24px;
+}
+
+.menuSearchItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.menuSearchItem:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.menuSearchItemText {
+  padding: 0 11px;
+  font-size: 18px;
+  color: #222b45;
+}
+
+.menuSearchMore {
+  padding: 20px;
+  color: var(--primary);
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  text-align: end;
+  width: 100%;
+}
+
+.menuSearchMore:hover {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.menuSearchItemImg {
+  max-width: 50px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  text-emphasis: none;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 991px) {
+  .menuSearch {
+    top: 135px;
+  }
+
+}

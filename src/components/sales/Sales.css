@@ -1,0 +1,20 @@
+.sales .PageBgHeading {
+  background-image: url("../../assets/images/salesCover.jpg");
+}
+
+.product-box__timer {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.product-box__timer__text {
+  background: #fff;
+  color: #27739f;
+  padding: 8px 15px;
+  display: inline-block;
+  border-radius: 100px;
+}

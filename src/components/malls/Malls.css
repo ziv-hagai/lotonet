@@ -1,0 +1,280 @@
+.malls .PageBgHeading {
+  background-image: url("../../assets/images/mallsCover.jpg");
+}
+
+.videoDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.videoDiv iframe {
+  width: 90% !important;
+  height: 560px !important;
+}
+
+.accessibilityDiv {
+  color: white;
+}
+
+[dir="rtl"] .accessibilityDiv {
+  text-align: right;
+}
+
+.accessibility {
+  background: #265c9b;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  display: none;
+}
+
+.productList {
+  display: flex;
+  overflow-x: scroll;
+  gap: 15px;
+}
+
+.mallContact {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.mallContact > svg {
+  fill: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 30px;
+  margin: 0 3px;
+}
+
+.mallContact .phone {
+  background: #61ce70;
+}
+
+.mallContact .email {
+  background: #ea4335;
+}
+
+.mallContact .facebook {
+  background: #0073a4;
+}
+
+.mallContact .navigate {
+  background: #3b5998;
+}
+
+.blogPostList {
+  margin-bottom: 100px;
+}
+
+.blogPostList .row-rev {
+  flex-direction: row-reverse;
+}
+
+.blogPostListMain {
+  padding: 19px 20px 0;
+}
+
+.blog {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 58px;
+  display: none;
+}
+
+/* [dir="ltr"] .blog {
+  flex-direction: row-reverse;
+} */
+
+[dir="rtl"] .blog {
+  text-align: right;
+}
+
+.blogImgDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blogImg {
+  width: 60%;
+  border-radius: 15px;
+}
+
+.blogContent {
+  direction: rtl;
+  width: 50%;
+  padding: 39.5px 10px 39.5px;
+}
+
+.pad {
+  padding: 39.5px 0px 39.5px 10px;
+}
+
+.blogContentH {
+  color: var(--secondry);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  line-height: 1.53;
+}
+
+.blogContentP {
+  font-size: 13px;
+  line-height: 1.53;
+  color: #a5a6a8;
+}
+
+.mallVideo-title {
+  padding: 10px 55px;
+}
+
+[dir="rtl"] .mallEvent-info {
+  text-align: right;
+}
+
+.mallEvent-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 80px 0 0;
+}
+
+[dir="ltr"] .mallEvent-info {
+  padding: 0 0 0 80px;
+}
+
+[dir="ltr"] .mallEvent .col-lg-5 {
+  margin-left: 0;
+}
+
+.mallEvent-info-date {
+  font-size: 23px;
+  font-weight: 700;
+  padding: 5px 0;
+}
+
+.mallEvent-info-title {
+  font-size: 30px;
+  font-weight: 700;
+  padding: 5px 0;
+  color: var(--primary);
+}
+
+.mallEvent-info-p {
+  padding: 5px 0;
+}
+
+.mallEvent-info-p div {
+  font-size: 15px;
+}
+
+.mallEvent .productDetails-img img {
+  border: 10px solid var(--primary);
+}
+
+.mallEvent .mainContent {
+  margin: 20px 7%;
+  min-height: unset;
+  width: 85%;
+}
+
+.mallEvent {
+  padding: 30px;
+}
+
+.mallEvent .mainText {
+  margin-top: 0;
+}
+
+[dir="rtl"] .malls .swiper-wrapper {
+  direction: initial;
+}
+
+.malls .PageBgHeading {
+  margin-bottom: 10px;
+}
+
+.malls .aboutAndAccessibilityMenu .categoriesSliderTabs button {
+  color: black;
+}
+
+.malls .categoryMainList {
+  margin: 10px 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .blogImg {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .blog {
+    flex-direction: column-reverse;
+    padding: 20px 10px 0;
+  }
+
+  .pad {
+    padding: 25px 0px 25px 10px;
+  }
+
+  .blogPostList .pad {
+    padding-top: 19.5px;
+  }
+
+  .blogImg {
+    width: 100%;
+  }
+
+  .blogContent {
+    width: 100%;
+  }
+
+  .blogContentH {
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .videoDiv iframe {
+    height: 210px !important;
+  }
+
+  .mallContact > svg {
+    padding: 3px;
+    font-size: 24px;
+  }
+
+  .mallDetails-title {
+    top: -20px;
+    font-size: 40px;
+  }
+
+  [dir="ltr"] .mallEvent-info {
+    padding: 0;
+  }
+
+  .mallEvent-info {
+    padding: 0;
+  }
+
+  .productDetails {
+    padding: 0;
+  }
+
+  .mallEvent-info-date {
+    padding-top: 10px;
+  }
+
+  .mallEvent .mainContent {
+    margin-bottom: 100px;
+  }
+}

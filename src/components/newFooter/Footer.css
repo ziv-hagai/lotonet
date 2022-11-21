@@ -1,0 +1,233 @@
+/* --------------------------------for web footer--------------------------------------- */
+
+.webFooter {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 0;
+  padding: 0 7%;
+  /* margin: 10vh 0 4vh; */
+  width: 100%;
+}
+
+.footerSquare {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  /*min-width: 205px;*/
+}
+
+.webFooter .footerSquare svg {
+  font-size: 64px;
+  fill: var(--primary);
+  background: #f1f1f3;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.webFooter .footerSquare:nth-child(2) svg {
+  padding: 14px;
+}
+
+.footerSquareH {
+  direction: rtl;
+  font-size: 24px;
+  color: #183b56;
+}
+
+.footerSquareP {
+  font-size: 17px;
+  direction: rtl;
+  padding: 7% 0 5%;
+}
+
+.footerSquareDetail {
+  font-size: 13px;
+  color: var(--primary);
+  position: absolute;
+  bottom: -23%;
+  padding-bottom: 4vh;
+}
+
+.footerSquareImg {
+  width: 19%;
+  min-width: 40px;
+  max-width: 80px;
+  margin: 6% 0 9%;
+}
+
+.footerSquare:last-child .footerSquareDetail {
+  font-size: 17px;
+}
+
+/*This is for Side bar buttons*/
+.customizer.open {
+  right: 0;
+}
+
+.border-left-blue-grey.border-left-lighten-4 {
+  border-left: 1px solid #cfd8dc !important;
+}
+
+.customizer {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: -400px;
+  bottom: 0;
+  width: 400px;
+  height: 100vh;
+  padding: 0;
+  -webkit-transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  -moz-transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  -o-transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  transition: right 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.customizer a.customizer-close {
+  color: #000;
+}
+
+.customizer .customizer-close {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  width: auto;
+  padding: 7px;
+}
+
+.customizer a.customizer-toggle {
+  display: block;
+  color: #6967ce;
+}
+
+.customizer .customizer-toggle {
+  line-height: 36px;
+  position: absolute;
+  top: 35%;
+  left: -54px;
+  width: 54px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px 0 0 8px;
+  color: var(--primary);
+  background-color: var(--primary);
+}
+
+.customizer .customizer-toggle a {
+  width: 100%;
+  display: flex;
+  margin: 15px;
+}
+
+.customizer .customizer-content {
+  height: 90%;
+  overflow: scroll;
+}
+
+/*This is for Side bar buttons*/
+
+/* this is for sidebar chat img */
+.webMainChat {
+  width: 100%;
+  display: flex;
+  margin: 15px;
+}
+
+.webFooter .customizer-content {
+  margin-top: 11vh;
+}
+
+.webFooter .customizer-toggle svg {
+  fill: white;
+  font-size: 24px;
+}
+
+/* --------------------------------for mobile footer--------------------------------------- */
+
+.footer {
+  background-color: white;
+  width: 100%;
+  padding: 15px 25px;
+  position: fixed;
+  bottom: -2px;
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
+  max-width: 428px;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.footer .sosAndGray {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.footer .sosAndGray>a {
+  margin-right: 36px;
+}
+
+.footer .homeIconLink {
+  background: var(--secondry);
+  border-radius: 50%;
+  padding: 2px 7px 7px;
+}
+
+.footer .homeIconLink svg {
+  fill: white;
+}
+
+.footer .grayIcons {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.webChatImg {
+  height: 22px;
+  width: 22px;
+}
+
+.footer .grayIcon {
+  height: 22px;
+  width: 22px;
+}
+
+.footer .grayIconLink>svg {
+  color: var(--gray);
+}
+
+.footer .grayIconLinkActive>svg {
+  color: var(--primary);
+  font-size: 30px;
+}
+
+.footer .mainChat {
+  background: var(--primary);
+  width: 79px;
+  position: absolute;
+  right: 19px;
+  bottom: 17px;
+  display: flex;
+  justify-content: center;
+  height: 79px;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.footer .chat {
+  width: 36px;
+  height: 36px;
+}

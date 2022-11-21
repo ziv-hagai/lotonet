@@ -1,0 +1,43 @@
+.gift .done {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 0;
+  margin: auto;
+}
+
+.gift img {
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.gift h1 {
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  top: 15%;
+}
+
+/* 
+.gift .giftBack-done {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  text-align: right;
+  color: var(--primary);
+  text-decoration: underline;
+  margin-bottom: 20px;
+} */
+
+@media only screen and (max-width: 1000px) {
+  .gift h1 {
+    font-size: 35px;
+    padding: 10px;
+  }
+}

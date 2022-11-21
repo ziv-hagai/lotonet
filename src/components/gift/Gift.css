@@ -1,0 +1,129 @@
+.gift * {
+  direction: rtl;
+}
+
+.gift {
+  padding: 40px 50px 0;
+  width: 100vw;
+  /* height: 100vh; */
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0 15%;
+}
+
+.for,
+.how {
+  width: 55%;
+  padding: 5%;
+  text-align: right;
+}
+
+.form {
+  max-width: 365px;
+}
+
+.preview {
+  padding: 5% 0;
+  /* width: 20vw; */
+}
+
+.giftBack {
+  text-align: right;
+  color: var(--primary);
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
+
+.giftHeader {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.gift .steps {
+  display: flex;
+  justify-content: center;
+}
+
+.gift .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%;
+}
+
+.gift .label {
+  color: var(--gray);
+}
+
+.gift .active .label {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.gift .circle {
+  background-color: var(--lightgray);
+  color: var(--gray);
+  border-radius: 50%;
+  padding: 3px 10px;
+  border: 3px solid var(--lightgray);
+}
+
+.gift .active .circle {
+  border: 3px solid var(--primary);
+  background-color: white;
+}
+
+.gift .past .circle {
+  border: 3px solid var(--primary);
+  background-color: var(--primary);
+  color: white;
+}
+
+.gift .past .label {
+  /* border: 3px solid var(--primary); */
+  color: var(--primary);
+}
+
+.gift .bottom-xs {
+  margin-bottom: 10px;
+}
+
+.gift .progress {
+  width: 30%;
+  margin-top: 45px;
+  background-color: var(--lightgray);
+  border-radius: 6px;
+}
+
+.gift .full {
+  background-color: var(--primary);
+}
+
+.how {
+  height: 100vh;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .gift .steps {
+    justify-content: space-between;
+  }
+
+  .main {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  .for,
+  .how {
+    width: 100%;
+  }
+}

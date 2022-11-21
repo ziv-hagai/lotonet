@@ -1,0 +1,17 @@
+.btnDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnDiv > * {
+  width: 100%;
+}
+
+.gift .payAmount {
+  background: var(--lightgray);
+  font-weight: bold;
+  color: black;
+  margin-bottom: 2%;
+}

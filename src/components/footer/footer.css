@@ -1,0 +1,57 @@
+.mainfooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0px -5px 10px 0px rgb(0 0 0 / 20%);
+  text-align: center;
+}
+
+.mainfooter__btns {
+  background: #fff;
+  height: 35px;
+  width: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.mainfooter__btns svg {
+  height: 22px;
+  width: 22px;
+}
+
+.mainfooter__btns svg path,
+.mainfooter__btns svg circle {
+  fill: #888;
+}
+
+.mainfooter__btns.active {
+  background: #cef2ff;
+}
+
+.mainfooter__btns.active svg path,
+.mainfooter__btns.active svg circle {
+  fill: var(--primary);
+}
+
+.mainfooter__btns--large {
+  height: 62px;
+  width: 62px;
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  background: var(--primary);
+}
+
+.mainfooter__btns--large svg {
+  height: 30px;
+  width: 30px;
+}
+
+.mainfooter__btns--large svg path {
+  fill: #fff;
+}

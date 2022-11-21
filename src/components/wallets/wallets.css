@@ -1,0 +1,156 @@
+.walletTamplate {
+  padding: 60px 0;
+}
+
+.walletIcons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.walletIconsBox {
+  height: 150px;
+  width: 150px;
+  box-shadow: 0px 0px 20px 0px rgb(42 134 159 / 10%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.walletIconsBox svg {
+  width: 45px;
+  height: 45px;
+  fill: var(--primary);
+}
+
+.walletIconsBox-title {
+  color: #000;
+  text-transform: capitalize;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  margin: 5px 0 0;
+}
+
+.walletBtns {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.walletBtns button {
+  max-width: 270px;
+  margin: 0 auto;
+  padding: 15px 20px !important;
+  font-size: 16px !important;
+  letter-spacing: 1px;
+}
+
+.moneyBlock {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.moneyBlock-heading {
+  text-align: center;
+}
+
+.moneyBlock-title {
+  color: #454545;
+  text-transform: capitalize;
+  font-size: 18px;
+  line-height: 34px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+
+.moneyBlock-price {
+  color: #000;
+  text-transform: capitalize;
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.moneyBlock .walletBtns {
+  text-align: center;
+  margin: 15px 0;
+  align-self: center;
+}
+
+.walletTamplate .formBtn button {
+  margin: 0 10px;
+}
+
+.moneyBlock-coupon .moneyBlock-price-title {
+  padding-bottom: 20%;
+  margin-bottom: 0;
+}
+
+.moneyBlock-coupon .moneyBlock-coupon-price {
+  /* font-size: 50px; */
+}
+
+.moneyBlock-coupon .moneyBlock-code {
+  font-size: 25px;
+  display: none;
+  text-transform: none;
+}
+
+.moneyBlock .moneyBlock-store {
+  text-align: center;
+}
+
+.moneyBlock .moneyBlock-store-img {
+  width: 43%;
+  border-radius: 50%;
+}
+
+.moneyBlock-product {
+  text-align: center;
+}
+
+.moneyBlock-product-img {
+  width: 130px;
+  border-radius: 4px;
+}
+
+.moneyBlock img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.inputStyle-select {
+  direction: ltr !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .walletIcons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .moneyBlock {
+    flex-direction: column;
+    gap: 7vh;
+  }
+
+  .moneyBlock-coupon .moneyBlock-price-title {
+    padding-bottom: 5px;
+  }
+
+  .moneyBlock-product-img {
+    width: 50%;
+  }
+}
