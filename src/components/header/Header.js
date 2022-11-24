@@ -36,7 +36,7 @@ import profile from "../../assets/icons/profile.svg";
 // import location from "../../assets/icons/location.svg";
 import "./header.css";
 // import search from "../../assets/images/search.png";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/lg_logo.jpg";
 
 const Header = ({ isMap, mapSearch }) => {
   const { t } = useTranslation();
@@ -193,7 +193,7 @@ const Header = ({ isMap, mapSearch }) => {
           <div className="row align-items-center">
             <div className="col-lg-3 col-2">
               <div className="headerLeft">
-                <span className="userBlock-img" 
+                <span className="userBlock-img"
                   onClick={() => {
                     setValue(0);
                     dispatch(setGetTabbingValue(0));
