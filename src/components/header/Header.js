@@ -311,10 +311,12 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                   <Tab
-                    label={t("about")}
-                    onClick={() => {
-                      // navigate("/allvendors");
-                    }}
+                    label={t("Coupons")}
+                  // onClick={() => {
+                  // navigate("/category/3"), {
+                  //   state: { id: category.id }
+                  // }
+                  // }}
                   />
                   <Tab
                     label={t("terms")}
