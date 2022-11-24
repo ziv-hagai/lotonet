@@ -26,7 +26,7 @@ import Art from "../../assets/images/lg_logo.jpg";
 import "./dashboard.css";
 import Pagination from "./pagination";
 import OtherCategories from "./otherCategories/OtherCategories";
-
+import Search from "./Search";
 //icons
 import { MdLocalLaundryService } from "react-icons/md";
 import { GiConverseShoe } from "react-icons/gi";
@@ -268,6 +268,7 @@ export default function Dashboard() {
               </h6>
             </div>
           </div>
+          <Search />
           {/* <div className="block-slider">
             <div className="module-heading">
               <OtherCategories slider={true} categories={otherCategoriesArr} />
@@ -399,43 +400,44 @@ export default function Dashboard() {
                                 </>
                               )}
                             </span>
-                            {/* <div< */}
+                            <div className="voucherBtns">
 
+                              <Button
+                                variant="outlined"
 
-                            <FormControl
-                              size="small"
-                              sx={{ minWidth: 50 }}
-                            >
-                              <Select
-                                autoWidth
-                                value={num}
-                                displayEmpty
-                                inputProps={{ 'aria-label': 'Without label', }}
-                                InputLabelProps={{ shrink: false }}
-                                onChange={handleSelect}
+                                onClick={() => {
+                                  // navigate("/bookingcartdetail");
+                                }}
                               >
-                                <MenuItem value="">
-                                  <em>None</em>
-                                </MenuItem>
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={6}>6</MenuItem>
-                                <MenuItem value={7}>7</MenuItem>
-                                <MenuItem value={8}>8</MenuItem>
-                                <MenuItem value={9}>9</MenuItem>
-                              </Select>
-                            </FormControl>
-                            <Button
-                              variant="outlined"
+                                לרכישה                              </Button>
+                              <FormControl
+                                size="small"
+                                sx={{ minWidth: 50 }}
+                              >
+                                <Select
+                                  autoWidth
+                                  value={num}
+                                  displayEmpty
+                                  inputProps={{ 'aria-label': 'Without label', }}
+                                  InputLabelProps={{ shrink: false }}
+                                  onChange={handleSelect}
+                                >
+                                  <MenuItem value="">
+                                    <em>None</em>
+                                  </MenuItem>
+                                  <MenuItem value={1}>1</MenuItem>
+                                  <MenuItem value={2}>2</MenuItem>
+                                  <MenuItem value={3}>3</MenuItem>
+                                  <MenuItem value={4}>4</MenuItem>
+                                  <MenuItem value={5}>5</MenuItem>
+                                  <MenuItem value={6}>6</MenuItem>
+                                  <MenuItem value={7}>7</MenuItem>
+                                  <MenuItem value={8}>8</MenuItem>
+                                  <MenuItem value={9}>9</MenuItem>
+                                </Select>
+                              </FormControl>
 
-                              onClick={() => {
-                                // navigate("/bookingcartdetail");
-                              }}
-                            >
-                              לרכישה                              </Button>
+                            </div>
                           </div>
                         </div>
                         {/*<h5 className="product-box__name">*/}

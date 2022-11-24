@@ -331,12 +331,12 @@ const Header = ({ isMap, mapSearch }) => {
                 <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
                   <MenuIcon />
                 </Button>
-                <Button
+                {/* <Button
                   className="dropBtn d-none d-lg-flex"
                   onClick={() => setDrawerOpen(true)}
                 >
                   <FilterAltIcon />
-                </Button>
+                </Button> */}
                 {isDrawerOpen ? (
                   <Drawer
                     anchor="right"
