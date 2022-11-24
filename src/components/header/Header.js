@@ -263,94 +263,9 @@ const Header = ({ isMap, mapSearch }) => {
                                 className="menuList-img"
                                 alt="My Awesome"
                               />
-                              {/*<Link*/}
-                              {/*  to="/userProfile"*/}
-                              {/*  className="nav-links"*/}
-                              {/*  onClick={closeMobileMenu}*/}
-                              {/*>*/}
-                              {/*  {t("businessProfile")}*/}
-                              {/*</Link>*/}
+
                             </li>
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={profile}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="My Awesome"*/}
-                            {/*  />*/}
-                            {/*  <Link*/}
-                            {/*    to="/managedashboard"*/}
-                            {/*    className="nav-links"*/}
-                            {/*    onClick={closeMobileMenu}*/}
-                            {/*  >*/}
-                            {/*    {t("manageDashbord")}*/}
-                            {/*  </Link>*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={search}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="agent"*/}
-                            {/*  />*/}
-                            {/*  <Link*/}
-                            {/*    to="/shops"*/}
-                            {/*    className="nav-links"*/}
-                            {/*    onClick={closeMobileMenu}*/}
-                            {/*  >*/}
-                            {/*    {t("searchForShop")}*/}
-                            {/*  </Link>*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={location}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt=""*/}
-                            {/*  />*/}
-                            {/*  {t("propertiesAroundme")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <StorefrontIcon className="menuList-img" />*/}
-                            {/*  {t("marketplace")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={groupChat}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt=""*/}
-                            {/*  />*/}
-                            {/*  {t("groupChats")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={Vacant}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="My Awesome"*/}
-                            {/*  />*/}
-                            {/*  {t("referralProgram")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={profile}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="My Awesome"*/}
-                            {/*  />*/}
-                            {/*  {t("Invitefriends")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={groupChat}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="My Awesome"*/}
-                            {/*  />*/}
-                            {/*  {t("orders")}*/}
-                            {/*</li>*/}
-                            {/*<li>*/}
-                            {/*  <img*/}
-                            {/*    src={card}*/}
-                            {/*    className="menuList-img"*/}
-                            {/*    alt="My Awesome"*/}
-                            {/*  />*/}
-                            {/*  {t("card")}*/}
-                            {/*</li>*/}
+
                           </ul>
                         </div>
                         <div className="menuFooter">
@@ -362,9 +277,7 @@ const Header = ({ isMap, mapSearch }) => {
                               {t("myProfile")}
                             </button>
                           )}
-                          {/*<button className="btn-blue">*/}
-                          {/*  {t("chatWithBot")}*/}
-                          {/*</button>*/}
+
                           <div className="menufooterBtns">
                             {user && (
                               <div
@@ -374,10 +287,7 @@ const Header = ({ isMap, mapSearch }) => {
                                 <LogoutIcon /> {t("logout")}{" "}
                               </div>
                             )}
-                            {/*<div className="menufooterLink isLink">*/}
-                            {/*  <SettingsIcon />*/}
-                            {/*  {t("settings")}*/}
-                            {/*</div>*/}
+
                           </div>
                         </div>
                       </div>
@@ -401,15 +311,15 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                   <Tab
-                    label={t("stores")}
+                    label={t("about")}
                     onClick={() => {
-                      navigate("/allvendors");
+                      // navigate("/allvendors");
                     }}
                   />
                   <Tab
-                    label={t("categories")}
+                    label={t("terms")}
                     onClick={() => {
-                      navigate("/categorylist");
+                      // navigate("/categorylist");
                     }}
                   />
                 </Tabs>

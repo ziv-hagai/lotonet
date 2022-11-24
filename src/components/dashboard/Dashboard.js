@@ -237,7 +237,7 @@ export default function Dashboard() {
         <Header />
 
         <div className="container" ref={ref} >
-          <div className="block-slider">
+          {/* <div className="block-slider">
             <div className="module-heading">
               <OtherCategories slider={true} categories={otherCategoriesArr} />
 
@@ -284,64 +284,19 @@ export default function Dashboard() {
 
               <CouponsList />
 
-              {/* <div className="row align-items-center">
-                <div className="col-7">
-                  <h6 className="module-heading__title">
-                    {t("featuredVendors")}
-                  </h6>
-                </div>
-                <div
-                  className="col-5 text-right isLink"
-                  onClick={() => {
-                    navigate("/allvendors");
-                  }}
-                >
-                  <div className="module-heading__link">{t("allvendors")}</div>
-                </div>
-              </div> */}
+       
             </div>
 
             <VendorList isAllVendors={false} storesText={"stores"} />
 
-            {/* <ScrollingCarousel>
-              <ul className="categoryList">
-                {merchants.length > 0
-                  ? merchants.map((item) => (
-                      <>
-                        <li
-                          onClick={() => {
-                            navigate(`/vendor/${item.id}`, {
-                              state: { id: item.id },
-                            });
-                          }}
-                          className="categoryList__block isLink"
-                        >
-                          <div className="category-box text-center">
-                            <div className="category-box__img">
-                              <img
-                                src={item.image}
-                                className="img-fluid"
-                                alt="My Awesome"
-                              />
-                            </div>
-                            <h6 className="category-box__title">
-                              {item.title}
-                            </h6>
-                          </div>
-                        </li>
-                      </>
-                    ))
-                  : t("No merchants")}
-              </ul>
-            </ScrollingCarousel> */}
-          </div>
-          {/*<ScrollingCarousel>*/}
+           
+          </div> */}
           <Tabs
             defaultSelectedIndex={0}
             className="categoriesSliderTabs"
             onChange={handleChange}
           >
-            <Tab value="all" label={t("all")}>
+            <Tab value="all" label={t("all vouchers")}>
               All
             </Tab>
             {categories.length > 0 &&
