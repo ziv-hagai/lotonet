@@ -755,7 +755,7 @@
 }
 
 .userBlock-img {
-  min-width: 50px !important;
+  min-width: 100px !important;
 }
 
 .userBlock-img>img {
