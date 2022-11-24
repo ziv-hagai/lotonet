@@ -169,7 +169,7 @@ iframe {
 }
 
 [dir="rtl"] .product-box__infoTop {
-  /* flex-direction: row-reverse; */
+  flex-direction: row-reverse;
   text-align: right;
 }
 

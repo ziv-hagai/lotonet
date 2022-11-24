@@ -134,12 +134,12 @@ const Header = ({ isMap, mapSearch }) => {
       navigate("/");
     }
     if (newValue === 1) {
-      navigate("/allvendors");
+      // navigate("/allvendors");
       dispatch(setGetTabbingValue(newValue));
     }
     if (newValue === 2) {
       dispatch(setGetTabbingValue(newValue));
-      navigate("/categorylist");
+      // navigate("/categorylist");
     }
   };
 
@@ -187,7 +187,7 @@ const Header = ({ isMap, mapSearch }) => {
   };
 
   return (
-    <div className="main">
+    <div className="main container">
       <div className={isMenuOpen ? "mainheader active-menu" : "mainheader"}>
         <div className="container-fluid">
           <div className="row align-items-center">
@@ -311,12 +311,10 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                   <Tab
-                    label={t("Coupons")}
-                  // onClick={() => {
-                  // navigate("/category/3"), {
-                  //   state: { id: category.id }
-                  // }
-                  // }}
+                    label={t("about")}
+                    onClick={() => {
+                      // navigate("/allvendors");
+                    }}
                   />
                   <Tab
                     label={t("terms")}

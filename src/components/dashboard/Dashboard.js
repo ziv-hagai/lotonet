@@ -9,6 +9,12 @@ import {
   getMerchants,
   getProductCategories,
 } from "../../redux/actions-exporter";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Box from '@mui/material/Box';
+import { Button } from "@material-ui/core";
+import { OutlinedInput } from '@mui/material';
 
 // import ChatBot from "../chat/ChatBot";
 import Header from "../header/Header";
@@ -16,7 +22,7 @@ import OnlyCategoryList from "../category/OnlyCategoryList";
 import CouponsList from "../couponsList";
 import VendorList from "./VendorList";
 import ClubRegistr from "./clubRegistr/ClubRegistr";
-import Art from "../../assets/images/art.jpg";
+import Art from "../../assets/images/lg_logo.jpg";
 import "./dashboard.css";
 import Pagination from "./pagination";
 import OtherCategories from "./otherCategories/OtherCategories";
@@ -57,6 +63,7 @@ export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
   const [BalanceTitleFont, setBalanceTitleFont] = useState('10vw');
+  const [num, setNum] = useState(1);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(makeProductsPerPage);
@@ -231,12 +238,36 @@ export default function Dashboard() {
   }, [ref.current]);
   // console.log(filterProducts);
   // console.log(filterProducts.filter((i) => i.discount));
+  const handleSelect = (event) => {
+    setNum(event.target.value);
+  };
   return (
     <>
       <div className="dashboard-tamplate">
         <Header />
 
         <div className="container" ref={ref} >
+          <div
+            className="balanceBox"
+            style={{
+              backgroundImage: "url(" + Art + ")",
+            }}
+          >
+            <div className="balanceBoxInner">
+              <h1
+                className="headTitle"
+                style={{ fontSize: BalanceTitleFont }}
+              >
+                {/* MallClub */}
+              </h1>
+              {/* <p className="balanceBoxTitle">{t("yourBalance")}</p> */}
+              <h6 className="balanceBoxprice">
+                שוברים דיגיטליים בקליק
+                {/* {user?.money?.toFixed(1) || 0} ₪ / */}
+                {/* {user?.credit?.toFixed(1) || 0} {t("e-credit")} */}
+              </h6>
+            </div>
+          </div>
           {/* <div className="block-slider">
             <div className="module-heading">
               <OtherCategories slider={true} categories={otherCategoriesArr} />
@@ -355,11 +386,11 @@ export default function Dashboard() {
                               {product.title}
                             </h6>
                             <span className="product-box__price">
-                              {product?.oldPrice && (
+                              {/* {product?.oldPrice && (
                                 <>
                                   <s>{product.oldPrice}₪</s>&nbsp;
                                 </>
-                              )}
+                              )} */}
                               {product?.price || 0}₪
                               {product?.credit && (
                                 <>
@@ -368,11 +399,49 @@ export default function Dashboard() {
                                 </>
                               )}
                             </span>
+                            {/* <div< */}
+
+
+                            <FormControl
+                              size="small"
+                              sx={{ minWidth: 50 }}
+                            >
+                              <Select
+                                autoWidth
+                                value={num}
+                                displayEmpty
+                                inputProps={{ 'aria-label': 'Without label', }}
+                                InputLabelProps={{ shrink: false }}
+                                onChange={handleSelect}
+                              >
+                                <MenuItem value="">
+                                  <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={4}>4</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                                <MenuItem value={6}>6</MenuItem>
+                                <MenuItem value={7}>7</MenuItem>
+                                <MenuItem value={8}>8</MenuItem>
+                                <MenuItem value={9}>9</MenuItem>
+                              </Select>
+                            </FormControl>
+                            <Button
+                              variant="outlined"
+
+                              onClick={() => {
+                                // navigate("/bookingcartdetail");
+                              }}
+                            >
+                              לרכישה                              </Button>
                           </div>
-                          {/*<h5 className="product-box__name">*/}
-                          {/*  3 {t("boxSimple")}{" "}*/}
-                          {/*</h5>*/}
                         </div>
+                        {/*<h5 className="product-box__name">*/}
+                        {/*  3 {t("boxSimple")}{" "}*/}
+                        {/*</h5>*/}
+                        {/* </div> */}
                       </div>
                     </li>
                   </>
