@@ -421,7 +421,7 @@ const Header = ({ isMap, mapSearch }) => {
                   ""
                 )}
 
-                <form
+                {/* <form
                   className={
                     isSearchOpen
                       ? "search-container d-none d-lg-block active-search"
@@ -443,7 +443,7 @@ const Header = ({ isMap, mapSearch }) => {
                   <div className="mic-container__btn">
                     <MicIcon />
                   </div>
-                </form>
+                </form> */}
                 <SearchResult
                   filterProducts={filterProducts}
                   filterStores={filterStores}

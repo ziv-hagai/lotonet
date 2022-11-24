@@ -34,7 +34,7 @@ import profile from "../../assets/icons/profile.svg";
 // import Vacant from "../../assets/icons/vacantLand.svg";
 // import card from "../../assets/icons/cart.svg";
 // import location from "../../assets/icons/location.svg";
-// import "./header.css";
+import "./search.css";
 // import search from "../../assets/images/search.png";
 import Logo from "../../assets/images/lg_logo.jpg";
 
@@ -167,180 +167,186 @@ const Search = ({ isMap, mapSearch }) => {
   };
 
   return (
-    <div className="main container">
-      <div className={isMenuOpen ? "mainheader active-menu" : "mainheader"}>
-        <div className="container-fluid">
-          <div className="row align-items-center">
-            <div className="col-lg-3 col-2">
-              <div className="headerLeft">
-              </div>
-            </div>
-            <div className="col-lg-9 col-10 text-right">
-              <div className="headerRight">
-                {/* <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
+    // <div className={isMenuOpen ? "mainheader active-menu" : "mainheader"}>
+    // <div className="container-fluid">
+    <div
+    // className="row align-items-center"
+    >
+
+      <div
+      // className="col-lg-9 col-10 "
+      >
+        <div
+        // className="headerRight"
+        >
+          {/* <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
                   <MenuIcon />
                 </Button> */}
 
-                <div>
-                  <div className="SideDrawerHead">
-                    <h6 className="SideDrawerTitle">{t("headerFilters")}</h6>
-                    <span
-                      onClick={() => onClose()}
-                      className="closeBtn"
-                    >
-                      {" "}
-                      {/* <Clear /> */}
-                    </span>
-                  </div>
-                  {productCategories?.length && <div className="filterBlock">
-                    <h6 className="filterBlockTitle">{t("category")}</h6>
-                    <Select
-                      labelId="product-category"
-                      id="product-category"
-                      value={filter?.id || ''}
-                      label="category"
-                      className="selectCategory"
-                      onChange={e => setFilter({ ...filter, id: e.target.value })}
-                    >
-                      <MenuItem value="">{t('Not selected')}</MenuItem>
-                      {productCategories.map((item) => <MenuItem value={item.id}>{item.title}</MenuItem>)}
-                    </Select>
-                  </div>}
-                  <div className="filterBlock">
-                    <h6 className="filterBlockTitle">{t("priceRange")}</h6>
-                    <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
-                    <Slider
-                      getAriaLabel={() => "Price range"}
-                      defaultValue={filter?.price || [minPrice, maxPrice]}
-                      onChangeCommitted={(e, value) => {
-                        setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
-                      }}
-                      max={maxPrice}
-                      min={minPrice}
-                      valueLabelDisplay="auto"
-                    />
-                  </div>
-
-                  <div className="saveFilter">
-                    <Button className="blueBtn" onClick={onFilter}>{t("apply")}</Button>
-                  </div>
-                </div>
-
-
-                <form
-                  className={
-                    isSearchOpen
-                      ? "search-container d-none d-lg-block active-search"
-                      : "search-container d-none d-lg-block"
-                  }
-                >
-                  <div className="search-container__btn">
-                    <SearchOutlinedIcon />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-bar"
-                    placeholder={`${t("Search")}`}
-                    className="search-container__input"
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={openSearch}
-                    value={searchText}
-                  />
-                  <div className="mic-container__btn">
-                    <MicIcon />
-                  </div>
-                </form>
-                <SearchResult
-                  filterProducts={filterProducts}
-                  filterStores={filterStores}
-                  isMap={isMap}
-                  mapSearch={mapSearch}
-                />
-                <Button
-                  className="dropBtn d-none d-lg-flex d-xl-none"
-                  onClick={() => {
-                    if (isSearchOpen) setSearchOpen(false);
-                    else setSearchOpen(true);
+          <div className="filter">
+            {/* <div
+              className="SideDrawerHead"
+            >
+              <h6 className="SideDrawerTitle">{t("headerFilters")}</h6>
+              <span
+                onClick={() => onClose()}
+                className="closeBtn"
+              >
+                {" "}
+              </span>
+            </div> */}
+            {/* {productCategories?.length && <div className="filterBlock">
+              <h6 className="filterBlockTitle">{t("category")}</h6>
+              <Select
+                labelId="product-category"
+                id="product-category"
+                value={filter?.id || ''}
+                label="category"
+                className="selectCategory"
+                onChange={e => setFilter({ ...filter, id: e.target.value })}
+              >
+                <MenuItem value="">{t('Not selected')}</MenuItem>
+                {productCategories.map((item) => <MenuItem value={item.id}>{item.title}</MenuItem>)}
+              </Select>
+            </div>} */}
+            <div className="filterBlock">
+              <h6 className="filterBlockTitle">{t("priceRange")}</h6>
+              <div className="priceSlider">
+                <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
+                <Slider
+                  // getAriaLabel={() => "Price range"}
+                  defaultValue={filter?.price || [minPrice, maxPrice]}
+                  onChangeCommitted={(e, value) => {
+                    setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
                   }}
-                >
-                  <SearchOutlinedIcon />
-                </Button>
-
-
+                  max={maxPrice}
+                  min={minPrice}
+                  valueLabelDisplay="auto"
+                />
               </div>
             </div>
-            <div className="col-12 d-flex d-lg-none">
-              <div
+
+
+            {/* </div> */}
+
+            <div className="searchWrapper">
+              <form
                 className={
-                  subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
+                  isSearchOpen
+                    ? "search-container d-none d-lg-block active-search"
+                    : "search-container d-none d-lg-block"
                 }
               >
-                <form
-                  className={
-                    isSearchOpen
-                      ? "search-container active-search"
-                      : "search-container"
-                  }
-                >
-                  <div className="search-container__btn">
-                    <SearchOutlinedIcon />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-bar"
-                    placeholder={`${t("Search")}`}
-                    className="search-container__input"
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={openSearch}
-                    value={searchText}
-                  />
-                  <div className="mic-container__btn">
-                    <MicIcon />
-                  </div>
-                </form>
-
-                <Button
-                  className="dropBtn d-flex d-lg-none"
-                  onClick={() => setDrawerOpen(true)}
-                >
-                  <FilterAltIcon />
-                </Button>
-
-                <div className="responsiveSubMenu">
-                  <Tabs
-                    value={value}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    onChange={handleChange}
-                    aria-label="disabled tabs example"
-                    className="MainMenu"
-                  >
-                    <Tab
-                      label={t("home")}
-                      onClick={() => {
-                        navigate("/");
-                      }}
-                    />
-                    <Tab
-                      label={t("stores")}
-                      onClick={() => {
-                        navigate("/allvendors");
-                      }}
-                    />
-                    <Tab
-                      label={t("categories")}
-                      onClick={() => {
-                        navigate("/categorylist");
-                      }}
-                    />
-                  </Tabs>
+                <div className="search-container__btn">
+                  <SearchOutlinedIcon />
                 </div>
+                <input
+                  type="text"
+                  id="search-bar"
+                  placeholder={`${t("Search")}`}
+                  className="search-container__input"
+                  onChange={(e) => setSearchText(e.target.value)}
+                  onClick={openSearch}
+                  value={searchText}
+                />
+                <div className="mic-container__btn">
+                  <MicIcon />
+                </div>
+              </form>
+            </div>
+
+            <SearchResult
+              filterProducts={filterProducts}
+              filterStores={filterStores}
+              isMap={isMap}
+              mapSearch={mapSearch}
+            />
+            <Button
+              className="dropBtn d-none d-lg-flex d-xl-none"
+              onClick={() => {
+                if (isSearchOpen) setSearchOpen(false);
+                else setSearchOpen(true);
+              }}
+            >
+              <SearchOutlinedIcon />
+            </Button>
+            <div className="saveFilter">
+              <Button className="blueBtn" onClick={onFilter}>{t("apply")}</Button>
+            </div>
+
+          </div>
+        </div>
+        <div className="col-12 d-flex d-lg-none">
+          <div
+            className={
+              subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
+            }
+          >
+            <form
+              className={
+                isSearchOpen
+                  ? "search-container active-search"
+                  : "search-container"
+              }
+            >
+              <div className="search-container__btn">
+                <SearchOutlinedIcon />
               </div>
+              <input
+                type="text"
+                id="search-bar"
+                placeholder={`${t("Search")}`}
+                className="search-container__input"
+                onChange={(e) => setSearchText(e.target.value)}
+                onClick={openSearch}
+                value={searchText}
+              />
+              <div className="mic-container__btn">
+                <MicIcon />
+              </div>
+            </form>
+
+            <Button
+              className="dropBtn d-flex d-lg-none"
+              onClick={() => setDrawerOpen(true)}
+            >
+              <FilterAltIcon />
+            </Button>
+
+            <div className="responsiveSubMenu">
+              <Tabs
+                value={value}
+                indicatorColor="primary"
+                textColor="primary"
+                onChange={handleChange}
+                aria-label="disabled tabs example"
+                className="MainMenu"
+              >
+                <Tab
+                  label={t("home")}
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                />
+                <Tab
+                  label={t("stores")}
+                  onClick={() => {
+                    navigate("/allvendors");
+                  }}
+                />
+                <Tab
+                  label={t("categories")}
+                  onClick={() => {
+                    navigate("/categorylist");
+                  }}
+                />
+              </Tabs>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
+    // </div>
   );
 };
 

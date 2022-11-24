@@ -411,7 +411,7 @@ div[data-arrow="right"] {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  margin-bottom: 5%;
+  /* margin-bottom: 5%; */
 }
 
 .headTitle {
