@@ -165,7 +165,7 @@ iframe {
 }
 
 [dir="rtl"] .text-right {
-  text-align: left !important;
+  /* text-align: left !important; */
 }
 
 [dir="rtl"] .product-box__infoTop {

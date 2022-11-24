@@ -24,6 +24,7 @@ import {
   checkCoupon,
 } from "../../redux/API/coupon/coupon.action";
 import QuantitySelector from "../quantitySelector";
+import widgetHelper from "../../helpers/widget"
 
 import "../cart/cart.css";
 
@@ -80,15 +81,9 @@ export default function Cart() {
   }, [dispatch]); // eslint-disable-line
 
   useEffect(() => {
-    if (!user?.id) return navigate("/login");
-    // if (!user?.result?.id) {
-    //   if (window?.B24Chat?.instance) {
-    //     const instance = window?.B24Chat?.instance;
-    //     instance.login();
-    //   } else {
-    //     return navigate("/");
-    //   }
-    // }
+    if (!user?.id) {
+      widgetHelper.login(() => navigate("/login"), () => navigate("/"));
+    }
   }, [user, navigate]);
 
   useEffect(() => {

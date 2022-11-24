@@ -64,29 +64,29 @@ const Marker = ({ type, image, openInfoWindow, show, data, selectedMap }) => {
         >
           <div
             className="product-preview col product-preview--map"
-          // onClick={() => {
-          //   type === "shop" ?
-          //     navigate(
-          //       `/vendor/${data.id}`, {
-          //       state: { id: data.id },
-          //     })
-          //     :
-          //     navigate(
-          //       `/product/${data.id}`, {
-          //       state: { id: data.id },
-          //     });
-          // }}
+
           >
             <CloseIcon onClick={openInfoWindow} />
             <img className="img" src={data.image} alt="" />
-
+            {data?.discount ? (
+              <div className="product-box__discount_marker">
+                <span className="product-box__off">
+                  {data.discountType ? "" : "-"}
+                  {data.discount}
+                  {data.discountType}
+                </span>
+              </div>
+            ) : (null)}
             <div className="productDetails">
               <div className="productDetailsHead flex"> </div>
 
               <div className="productTitle">{data.title}</div>
 
               {type === "product" ? (
-                <div className="price">{data?.price || 0}$</div>
+                <>
+                  <div className="store">{data?.store}</div>
+                  <div className="price">{data?.price || 0}$</div>
+                </>
               ) : null}
               <div className="location">
                 <Location />
@@ -97,29 +97,9 @@ const Marker = ({ type, image, openInfoWindow, show, data, selectedMap }) => {
                 </div>
               </div>
 
-              {/* <div className="price">{data?.city }</div> */}
 
               <div className="mapCardFooter flex">
-                {/* <div className="distance">{data.distance || '100 meter'}</div> */}
 
-                {/* <div
-                  className="type isLink"
-                  onClick={() => {
-                    if (data.type === "company") {
-                      navigate("/company", {
-                        state: { isBookingApp: true },
-                      });
-                    } else if (data.type === "mall") {
-                    } else if (data.type === "shop") {
-                    } else {
-                      navigate("/categorydetails", {
-                        state: { categoryDetails: data },
-                      });
-                    }
-                  }}
-                >
-                  {data.type}
-                </div> */}
               </div>
               <div className="product-preview-status">
                 <Chip label={t("navigate")} />

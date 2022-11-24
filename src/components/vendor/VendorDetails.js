@@ -169,7 +169,7 @@ export default function VendorsDetails() {
                     {/*  {t("footLocker")}*/}
                     {/*</h6>*/}
                     <p className="vendorbanner-brandSubtitle">
-                      {merchant?.title}
+                      {t(merchant?.title)}
                     </p>
                   </div>
                 </div>

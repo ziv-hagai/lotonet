@@ -1,5 +1,5 @@
 .dashboard-tamplate {
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   overflow-x: hidden;
 }
 
@@ -146,7 +146,7 @@ div[data-arrow="right"] {
 
 /* --- Product Tabs --- */
 .product-block {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   direction: ltr;
   display: flex;
   flex-direction: column;

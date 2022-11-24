@@ -1,5 +1,9 @@
-const getInstance = (failCallback) => {
+const getInstance = (failCallback, successCallback) => {
   if (window?.B24Chat?.instance) {
+    if (typeof successCallback === 'function') {
+      successCallback()
+    }
+
     return window.B24Chat.instance
   }
 
@@ -10,8 +14,8 @@ const getInstance = (failCallback) => {
   return false;
 }
 
-const login = (failCallback) => {
-  if(getInstance(failCallback)) {
+const login = (failCallback, successCallback) => {
+  if(getInstance(failCallback, successCallback)) {
     getInstance().login();
   }
 }

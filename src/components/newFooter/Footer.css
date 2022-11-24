@@ -114,7 +114,7 @@
 .customizer .customizer-toggle {
   line-height: 36px;
   position: absolute;
-  top: 35%;
+  top: 28%;
   left: -54px;
   width: 54px;
   cursor: pointer;
@@ -207,6 +207,7 @@
 
 .footer .grayIconLink>svg {
   color: var(--gray);
+  font-size: 24px;
 }
 
 .footer .grayIconLinkActive>svg {

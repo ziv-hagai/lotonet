@@ -50,7 +50,7 @@ export default function CategoryProduct() {
 
   const makeProductsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(makeProductsPerPage);
+  const [productsPerPage] = useState(12);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentFilterProducts = filterProducts.slice(

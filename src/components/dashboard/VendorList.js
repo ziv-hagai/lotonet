@@ -22,8 +22,8 @@ export default function VendorList(props) {
   const merchantCategories = useSelector(
     (state) => state.merchantCategories.merchantCategories
   );
-  console.log(merchants);
-  console.log(merchantCategories);
+  // console.log(merchants);
+  // console.log(merchantCategories);
   useEffect(() => {
     setFilterMerchants(merchants);
   }, [merchants]); // eslint-disable-line
@@ -117,10 +117,10 @@ export default function VendorList(props) {
         </Tab>
         {merchants.length > 0
           ? merchantCategories?.map((category) => (
-              <Tab value={category.id} label={category.title}>
-                {category.title}
-              </Tab>
-            ))
+            <Tab value={category.id} label={category.title}>
+              {category.title}
+            </Tab>
+          ))
           : ""}
       </Tabs>
 
@@ -128,28 +128,28 @@ export default function VendorList(props) {
         <ul className="categoryList">
           {merchants.length > 0
             ? FilterMerchants.map((item) => (
-                <>
-                  <li
-                    onClick={() => {
-                      navigate(`/vendor/${item.id}`, {
-                        state: { id: item.id },
-                      });
-                    }}
-                    className="categoryList__block isLink"
-                  >
-                    <div className="category-box text-center">
-                      <div className="category-box__img">
-                        <img
-                          src={item.image}
-                          className="img-fluid"
-                          alt="My Awesome"
-                        />
-                      </div>
-                      <h6 className="category-box__title">{t(item.title)}</h6>
+              <>
+                <li
+                  onClick={() => {
+                    navigate(`/vendor/${item.id}`, {
+                      state: { id: item.id },
+                    });
+                  }}
+                  className="categoryList__block isLink"
+                >
+                  <div className="category-box text-center">
+                    <div className="category-box__img">
+                      <img
+                        src={item.image}
+                        className="img-fluid"
+                        alt="My Awesome"
+                      />
                     </div>
-                  </li>
-                </>
-              ))
+                    <h6 className="category-box__title">{t(item.title)}</h6>
+                  </div>
+                </li>
+              </>
+            ))
             : t("No merchants")}
         </ul>
       </ScrollingCarousel>

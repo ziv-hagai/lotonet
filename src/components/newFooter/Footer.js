@@ -8,6 +8,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { IoIosChatbubbles } from "react-icons/io";
+import { BiHandicap } from "react-icons/bi";
+import AccessibleIcon from '@mui/icons-material/Accessible';
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import StoreMallDirectoryIcon from "@mui/icons-material/StoreMallDirectory";
 import chatIcon from "../../assets/images/footer/chat.png";
@@ -71,6 +73,9 @@ const Footer = () => {
                   <IoIosChatbubbles onClick={() => setOpenSideBar(false)} />
                 )}
               </Link>
+              <Link to="#">
+                <BiHandicap  />
+              </Link>
             </div>
           </div>
         </div>
@@ -91,6 +96,9 @@ const Footer = () => {
                     />
                   );
                 })}
+                <Link to="#" className="grayIconLink">
+                  <BiHandicap  />
+                </Link>
               </div>
             </div>
             <div className="mainChat" onClick={() => widgetHelper.open()}>

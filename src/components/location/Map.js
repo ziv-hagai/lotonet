@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
+import {
+  getMerchants,
+  getProductCategories,
+} from "../../redux/actions-exporter";
 //dependencies
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -50,6 +53,7 @@ const getMapOptions = () => {
     disableDefaultUI: true,
     mapTypeControl: true,
     streetViewControl: true,
+    clickableIcons: false,
     styles: [
       {
         featureType: "poi",
@@ -59,91 +63,6 @@ const getMapOptions = () => {
     ],
   };
 };
-
-// const mapAllData = [
-//   {
-//     id: 1,
-//     position: {
-//       lng: 34.8909185,
-//       lat: 31.7040256,
-//     },
-//     image: Saree2,
-//     price: "200$",
-//     name: "Fox Home1",
-//     location: "israel company",
-//     distance: "1500 miter",
-//     type: "product",
-//     cupon: "40%",
-//   },
-//   {
-//     id: 2,
-//     position: {
-//       lng: 34.870766,
-//       lat: 32.184448,
-//     },
-//     image: jns,
-//     price: "200$",
-//     name: "Fox Home2",
-//     location: "israel company",
-//     distance: "1500 miter",
-//     type: "product",
-//     cupon: "40%",
-//   },
-//   {
-//     id: 3,
-//     position: {
-//       lng: 35.290146,
-//       lat: 32.919945,
-//     },
-//     image: skrt,
-//     price: "200$",
-//     name: "Fox Home3",
-//     location: "israel company",
-//     distance: "1500 miter",
-//     type: "product",
-//     cupon: "40%",
-//   },
-//   {
-//     id: 4,
-//     position: {
-//       lng: 34.8300081,
-//       lat: 31.2500163,
-//     },
-//     image: shop,
-//     price: "200$",
-//     name: "My Shop",
-//     location: "israel company",
-//     distance: "100 miter",
-//     type: "shop",
-//     cupon: "40%",
-//   },
-//   {
-//     id: 5,
-//     position: {
-//       lng: 34.77001176,
-//       lat: 32.07999147,
-//     },
-//     image: mall1,
-//     price: "200$",
-//     name: "Mega Mall",
-//     location: "israel company",
-//     distance: "400 miter",
-//     type: "mall",
-//   },
-//   {
-//     id: 6,
-//     position: {
-//       lng: 35.217018,
-//       lat: 31.771959,
-//     },
-//     image: brownhorse2,
-//     price: "200$",
-//     name: "Mega Mall",
-//     location: "israel company",
-//     distance: "400 miter",
-//     type: "company",
-//   },
-// ];
 
 const defaultCenter = {
   lng: 34.809185,
@@ -174,6 +93,13 @@ function Map() {
     (state) => state.productCategories.productCategories
   );
   const merchants = useSelector((state) => state.merchant.merchants);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMerchants());
+    dispatch(getProductCategories());
+  }, [dispatch]);
+
   //  search
   useEffect(() => {
     if (categories.length) {
@@ -190,9 +116,10 @@ function Map() {
         []
       );
 
-      const addLocation = prepareProduct.map(product => {
+      let addLocation = prepareProduct.map(product => {
         return {
-          ...product, latitude:
+          ...product,
+          latitude:
             merchants.find((merchant) => merchant.id === product.merchantId
             )?.latitude || null,
           longitude:
@@ -200,42 +127,55 @@ function Map() {
             )?.longitude || null,
           city:
             merchants.find((merchant) => merchant.id === product.merchantId
-            )?.city || null
+            )?.city || null,
+          address:
+            merchants.find((merchant) => merchant.id === product.merchantId
+            )?.address || null,
+          store:
+            merchants.find((merchant) => merchant.id === product.merchantId
+            )?.title || null,
         }
       })
-      // console.log(addLocation);
 
+      addLocation = addLocation.filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i)
+      // console.log(addLocation);
       setProducts(addLocation);
       setStores(merchants);
     }
   }, [categories]); // eslint-disable-line
 
   useEffect(() => {
-    // const merged = [...stores, ...products];
-    // setCategory(merged);
-    // setFilterMap(merged);
+
     setCategory(stores);
     setFilterMap(stores);
   }, [stores, products]);
 
   const handleClickOpen = (p) => {
-    if (showingInfoWindow) setShowingInfoWindow(false);
-    else setShowingInfoWindow(true);
-    setSelectedMap(p);
-    setOpen(true);
-    setActiveMarker(null);
+    if (showingInfoWindow) {
+      setShowingInfoWindow(false);
+      setCenter({})
+    }
+    else {
+      setShowingInfoWindow(true);
+      setSelectedMap(p);
+      setOpen(true);
+      setActiveMarker(null);
+      setCenter({})
+      setCenter({ lat: p.longitude, lng: p.latitude })
+    }
   };
 
   const handleChange = (newValue) => {
     if (newValue === "mall") {
-      // let artFilter = category.filter((item) => item.type === newValue);
+      setType("mall")
+
       setFilterMap([]);
     } else if (newValue === "shop") {
-      // let artFilter = category.filter((item) => item.type === newValue);
+
       setFilterMap(stores);
       setType("shop")
     } else if (newValue === "product") {
-      // let artFilter = category.filter((item) => item.type === newValue);
+
       setFilterMap(products);
       setType("product")
     } else {
@@ -258,6 +198,9 @@ function Map() {
     setCenter({ lat: found.longitude, lng: found.latitude })
   }
 
+
+  // console.log(filterMap.filter((item) => item.title == "Bigelectric"));
+  // console.log(filterMap);
   return (
     <>
       <Header isMap={true} mapSearch={mapSearch} />
@@ -281,6 +224,10 @@ function Map() {
             <ToggleButtonGroup
               aria-label="text alignment"
               className="mapFilterGroup"
+              color="primary"
+              value={type}
+              exclusive
+            // onChange={handleToggle}
             >
               {/* <ToggleButton
                 aria-label="left aligned"
@@ -296,6 +243,8 @@ function Map() {
               <ToggleButton
                 aria-label="left aligned"
                 onClick={() => handleChange("product")}
+                selectedColor='grey'
+                value="product"
               >
                 <Tooltip title="Product">
                   <TbShirt />
@@ -305,6 +254,7 @@ function Map() {
               <ToggleButton
                 aria-label="centered"
                 onClick={() => handleChange("shop")}
+                value="shop"
               >
                 <Tooltip title="Shop">
                   <BsShop />
@@ -313,6 +263,7 @@ function Map() {
               <ToggleButton
                 aria-label="justified"
                 onClick={() => handleChange("mall")}
+                value="mall"
               >
                 <Tooltip title="Mall">
                   <TbBuildingSkyscraper />
@@ -364,6 +315,8 @@ function Map() {
               center={center}
               defaultZoom={12}
               options={getMapOptions}
+              onDrag={() => setCenter({})}
+
             >
               {/* {console.log(filterMap)} */}
               {filterMap.length > 0 &&

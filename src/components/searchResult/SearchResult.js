@@ -59,7 +59,7 @@ const SearchReults = ({ filterProducts, filterStores, isMap, mapSearch }) => {
                     // console.log(el)
                     mapSearch(el)
                     :
-                    navigate(`/ vendor / ${el.id}`, {
+                    navigate(`/vendor/${el.id}`, {
                       state: { id: el.id },
                     });
                 }}

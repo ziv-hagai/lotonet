@@ -100,7 +100,7 @@ export default function Shops() {
         <div className="sidebarModule">
           <div className="pageTamplate">
             <div className="container">
-              <div class="agentChatModule">
+              <div className="agentChatModule">
                 <div className="agentSearch">
                   {/* <img src={location} className="search-icon" alt=""/> */}
                   <input

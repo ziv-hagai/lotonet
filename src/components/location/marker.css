@@ -22,3 +22,20 @@
   /* font-weight: bold !important; */
   font-size: 14px !important;
 }
+
+.product-box__discount_marker {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.product-box__off {
+  background: #27739f;
+  padding: 8px 15px;
+  color: #fff;
+  display: inline-block;
+  border-radius: 100px;
+}

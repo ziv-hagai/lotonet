@@ -5,18 +5,17 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
-// import ChatBot from "../chat/ChatBot";
-import Header from "../header/Header";
-import OnlyCategoryList from "../category/OnlyCategoryList";
-
 import {
   getMerchants,
   getProductCategories,
 } from "../../redux/actions-exporter";
+
+// import ChatBot from "../chat/ChatBot";
+import Header from "../header/Header";
+import OnlyCategoryList from "../category/OnlyCategoryList";
 import CouponsList from "../couponsList";
 import VendorList from "./VendorList";
-
+import ClubRegistr from "./clubRegistr/ClubRegistr";
 import Art from "../../assets/images/art.jpg";
 import "./dashboard.css";
 import Pagination from "./pagination";
@@ -51,7 +50,7 @@ if (screenWidth > 991) {
 } else if (screenWidth > 500) {
   makeProductsPerPage = 6;
 } else {
-  makeProductsPerPage = 10;
+  makeProductsPerPage = 12;
 }
 
 export default function Dashboard() {
@@ -230,7 +229,8 @@ export default function Dashboard() {
     ref.current.offsetWidth < 500 ? setBalanceTitleFont('67px') : console.log(1);
     // ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(1) : console.log(1);
   }, [ref.current]);
-
+  // console.log(filterProducts);
+  // console.log(filterProducts.filter((i) => i.discount));
   return (
     <>
       <div className="dashboard-tamplate">
@@ -248,9 +248,9 @@ export default function Dashboard() {
                 }}
               >
                 <div className="balanceBoxInner">
-                  <h1 
+                  <h1
                     className="headTitle"
-                    style={{fontSize: BalanceTitleFont}}
+                    style={{ fontSize: BalanceTitleFont }}
                   >MallClub</h1>
                   <p className="balanceBoxTitle">{t("yourBalance")}</p>
                   <h6 className="balanceBoxprice">
@@ -432,6 +432,7 @@ export default function Dashboard() {
             />
           </div>
         </div>
+        <ClubRegistr />
       </div>
     </>
   );

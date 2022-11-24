@@ -14,6 +14,7 @@ import CouponList from "./couponList/CouponList";
 import { sendMoney } from "../../redux/actions-exporter";
 
 import "../wallets/wallets.css";
+import widgetHelper from "../../helpers/widget";
 
 export default function Wallets() {
   const [show, setShow] = useState(false);
@@ -29,16 +30,9 @@ export default function Wallets() {
   const [purpose, setPurpose] = useState("");
 
   useEffect(() => {
-    if (!user?.id) return navigate("/login");
-    // if (!user?.result?.id) {
-    //   if (window?.B24Chat?.instance) {
-    //     const instance = window?.B24Chat?.instance;
-    //     instance.login();
-    //     return;
-    //   } else {
-    //     return navigate("/");
-    //   }
-    // }
+    if (!user?.id) {
+      widgetHelper.login(() => navigate("/login"), () => navigate("/"));
+    }
     setMaxAmount(user?.money || 0);
   }, [user, navigate]);
 
