@@ -45,9 +45,7 @@ export default function AllCoupons({ filterProducts }) {
     // });
   };
 
-  const handleSelect = (event) => {
-    setNum(event.target.value);
-  };
+
 
   return (
     <>
@@ -71,22 +69,13 @@ export default function AllCoupons({ filterProducts }) {
                         onClick={() => handleFavChange()}
                       />
                     </div>
-                    {product?.discount && (
-                      <div className="product-box__discount">
-                        <span className="product-box__off">
-                          {product.discountType ? "" : "-"}
-                          {product.discount}
-                          {product.discountType}
-                        </span>
-                      </div>
-                    )}
+
                   </div>
                   <div className="product-box__info">
                     <div className="product-box__infoTop">
                       <h6 className="product-box__brand">
                         {product.title}
                       </h6>
-                      {/* <span className="product-box__price"> */}
                       {product.price > 50 ?
                         (<div>{product.price} ₪</div>)
                         :
@@ -98,19 +87,11 @@ export default function AllCoupons({ filterProducts }) {
                               size="small"
                               type="text"
                               id="search-bar"
-                              // sx={{ background: "#f9f9f9" }}
                               placeholder="סכום"
-                            // onChange={(e) => setSearchText(e.target.value)}
-                            // value={searchText}
                             />
                           </FormControl>
-
-
                         </>)
                       }
-                      {/* </span> */}
-
-
                       <FormControl size="small" sx={{ minWidth: 60 }}>
                         <Select
                           autoWidth
@@ -118,7 +99,7 @@ export default function AllCoupons({ filterProducts }) {
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           InputLabelProps={{ shrink: false }}
-                          onChange={handleSelect}
+                          onChange={(e) => setNum(e.target.value)}
                         >
                           <MenuItem value="">
                             <em>None</em>
@@ -136,9 +117,7 @@ export default function AllCoupons({ filterProducts }) {
                       </FormControl>
                       <Button
                         variant="outlined"
-                        onClick={() => {
-                          // navigate("/bookingcartdetail");
-                        }}
+                        onClick={() => { }}
                       >
                         לרכישה{" "}
                       </Button>

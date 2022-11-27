@@ -5,6 +5,11 @@ import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import FormControl from "@mui/material/FormControl";
+import { FormGroup, TextField } from '@mui/material';
+
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 import Header from "../header/Header";
 import { addToCart } from "../../redux/API/cart/cart.action";
@@ -22,6 +27,7 @@ export default function ProductDetails() {
   const product = useSelector((state) => state.product.product);
   const [numbersOfItems, setNumbersOfItems] = useState(1);
   const userId = useSelector((state) => state?.user?.user?.id);
+  const [num, setNum] = useState(1);
 
   useEffect(() => {
     dispatch(getProductById(id));
@@ -42,7 +48,9 @@ export default function ProductDetails() {
       });
     }
   }, [product]); //eslint-disable-line
+
   product && console.log(product);
+
   return (
     <div>
       <Header />
@@ -53,16 +61,55 @@ export default function ProductDetails() {
               <div className="productDetails-info">
                 <div className="productDetails-heading">
                   <h5 className="productDetails-title">{product.title}</h5>
-                  <h6 className="productDetails-price">
-                    {product?.oldPrice && (
-                      <>
-                        <s>{product.oldPrice}₪</s>&nbsp;
-                      </>
-                    )}
-                    <span>{product?.price || 0}₪</span>
-                    {product?.credit && <> + {product.credit} e-credits</>}
-                  </h6>
+
+                  {product.price > 50 ?
+                    (<div>{product.price} ₪</div>)
+                    :
+                    (<>
+                      ₪
+                      <FormControl
+                        sx={{ maxWidth: 80 }}        >
+                        <TextField
+                          size="small"
+                          type="text"
+                          id="search-bar"
+                          placeholder="סכום"
+                        />
+                      </FormControl>
+                    </>)
+                  }
+                  <FormControl size="small" sx={{ minWidth: 60 }}>
+                    <Select
+                      autoWidth
+                      value={num}
+                      displayEmpty
+                      inputProps={{ "aria-label": "Without label" }}
+                      InputLabelProps={{ shrink: false }}
+                      onChange={(e) => setNum(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={1}>1</MenuItem>
+                      <MenuItem value={2}>2</MenuItem>
+                      <MenuItem value={3}>3</MenuItem>
+                      <MenuItem value={4}>4</MenuItem>
+                      <MenuItem value={5}>5</MenuItem>
+                      <MenuItem value={6}>6</MenuItem>
+                      <MenuItem value={7}>7</MenuItem>
+                      <MenuItem value={8}>8</MenuItem>
+                      <MenuItem value={9}>9</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Button
+                    sx={{ height: 40 }}
+                    variant="outlined"
+                    onClick={() => { }}
+                  >
+                    לרכישה
+                  </Button>
                 </div>
+
                 <div
                   onClick={() => {
                     navigate(`/vendor/${product.merchant.id}`, {
@@ -94,51 +141,12 @@ export default function ProductDetails() {
                     {product?.content || ""}
                   </p>
                 </div>
-                <QuantitySelector
-                  onChange={handleChangeQuantity}
-                  minValue="1"
-                  value={numbersOfItems}
-                />
-                <div className="productDetails-btns">
-                  <Button
-                    className="addcart_btn"
-                    onClick={() => handleAddProduct(product)}
-                  >
-                    {t("addToCart")}
-                  </Button>
-                  {/*<Button className="buynow_btn">{t("BuyNow")}</Button>*/}
-                </div>
-                <ul className="productDetails-List">
-                  {product?.sku && (
-                    <li className="productDetails-ListItem">
-                      <strong>{t("SKU")}: </strong>
-                      {product.sku}
-                    </li>
-                  )}
-                  <li className="productDetails-ListItem">
-                    <strong>{t("categories")}: </strong>
-                    {product?.categories?.reduce(
-                      (p, c, i) => p + (i > 0 ? ", " : "") + c.title,
-                      ""
-                    ) || t("No categories")}
-                  </li>
-                  {/*<li className="productDetails-ListItem">*/}
-                  {/*  <strong>{t("tags")}: </strong> {t("laptop")}*/}
-                  {/*</li>*/}
-                </ul>
+
               </div>
             </div>
             <div className="col-lg-5 offset-lg-1">
               <div className="productDetails-img">
-                {product?.discount && (
-                  <div className="product-box__discount">
-                    <span className="product-box__off">
-                      {product.discountType ? "" : "-"}
-                      {product.discount}
-                      {product.discountType}
-                    </span>
-                  </div>
-                )}
+
                 <img
                   src={product?.image}
                   alt=""
