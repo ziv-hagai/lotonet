@@ -15,8 +15,16 @@ import Header from "../header/Header";
 import { addToCart } from "../../redux/API/cart/cart.action";
 import { getProductById } from "../../redux/API/product/product.action";
 import QuantitySelector from "../quantitySelector";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
 
+import "swiper/swiper.min.css";
 import "../category/category.css";
+
+import {
+  getMerchants,
+  getMerchantCategories,
+} from "../../redux/actions-exporter";
 
 export default function ProductDetails() {
   const location = useLocation();
@@ -28,7 +36,19 @@ export default function ProductDetails() {
   const [numbersOfItems, setNumbersOfItems] = useState(1);
   const userId = useSelector((state) => state?.user?.user?.id);
   const [num, setNum] = useState(1);
+  const [FilterMerchants, setFilterMerchants] = useState([]);
 
+  const merchants = useSelector((state) => state.merchant.merchants);
+  const merchantCategories = useSelector(
+    (state) => state.merchantCategories.merchantCategories
+  );
+  useEffect(() => {
+    setFilterMerchants(merchants);
+  }, [merchants]); // eslint-disable-line
+  useEffect(() => {
+    dispatch(getMerchants());
+    dispatch(getMerchantCategories());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getProductById(id));
   }, [id]); //eslint-disable-line
@@ -110,29 +130,6 @@ export default function ProductDetails() {
                   </Button>
                 </div>
 
-                <div
-                  onClick={() => {
-                    navigate(`/vendor/${product.merchant.id}`, {
-                      state: { id: product.merchant.id },
-                    });
-                  }}
-                  className="productDetails-brand"
-                >
-                  {product?.merchant?.image && (
-                    <span className="productDetails-brandImage">
-                      <img
-                        src={product.merchant.image}
-                        alt=""
-                        height={20}
-                        width={20}
-                        className="img-fluid"
-                      />
-                    </span>
-                  )}
-                  <p className="productDetails-brandName">
-                    {product?.merchant?.title || t("No merchant")}
-                  </p>
-                </div>
                 <div className="productDetails-content">
                   <h6 className="productDetails-contentTitle">
                     {t("description")}
@@ -142,11 +139,11 @@ export default function ProductDetails() {
                   </p>
                 </div>
 
+
               </div>
             </div>
             <div className="col-lg-5 offset-lg-1">
               <div className="productDetails-img">
-
                 <img
                   src={product?.image}
                   alt=""
@@ -156,9 +153,54 @@ export default function ProductDetails() {
                 />
               </div>
             </div>
+            <div className="module-heading__link">רשתות מכבדות</div>
+            <Swiper
+              freeMode={true}
+              slidesPerView={"auto"}
+              spaceBetween={10}
+              speed={10000}
+              style={{ width: "auto", direction: "ltr" }}
+              autoplay=
+              {{
+                delay: -10000,
+                disableOnInteraction: false,
+                // waitForTransition: false
+              }}
+              modules={[Autoplay]}
+            >
+
+              {merchants.length > 0
+                ? FilterMerchants.map((item, index) => (
+                  <SwiperSlide
+                    key={index}
+                    style={{ width: "auto" }}
+
+                    onClick={() => {
+                      navigate(`/vendor/${item.id}`, {
+                        state: { id: item.id },
+                      });
+                    }}
+                    className="categoryList__block isLink"
+                  >
+                    <div className="category-box text-center">
+                      <div className="category-box__img">
+                        <img
+                          src={item.image}
+                          className="img-fluid"
+                          alt="My Awesome"
+                        />
+                      </div>
+                      <h6 className="category-box__title">{t(item.title)}</h6>
+                    </div>
+                  </SwiperSlide>
+
+                ))
+                : t("No merchants")}
+
+            </Swiper>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

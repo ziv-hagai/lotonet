@@ -16,6 +16,7 @@
 
 .productDetails-img img {
   width: 100%;
+  max-width: 200px;
 }
 
 .productDetails-heading {
@@ -178,11 +179,9 @@
   height: 50%;
   width: 100%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.6867121848739496) 0%,
-    rgba(255, 182, 182, 0) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.6867121848739496) 0%,
+      rgba(255, 182, 182, 0) 100%);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -233,11 +232,9 @@
   height: 50%;
   width: 100%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.6867121848739496) 0%,
-    rgba(255, 182, 182, 0) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0.6867121848739496) 0%,
+      rgba(255, 182, 182, 0) 100%);
   position: absolute;
   left: 0;
   bottom: 0;
