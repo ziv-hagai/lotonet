@@ -42,7 +42,7 @@ export default function ProductDetails() {
       });
     }
   }, [product]); //eslint-disable-line
-
+  product && console.log(product);
   return (
     <div>
       <Header />
@@ -91,7 +91,7 @@ export default function ProductDetails() {
                     {t("description")}
                   </h6>
                   <p className="productDetails-contentText">
-                    {product?.description || ""}
+                    {product?.content || ""}
                   </p>
                 </div>
                 <QuantitySelector
