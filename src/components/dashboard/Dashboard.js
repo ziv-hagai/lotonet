@@ -349,20 +349,15 @@ export default function Dashboard() {
                   <>
                     <li
                       className="product-Module__list isLink"
-                      onClick={() => {
-                        // if (product.imagename === "booking") {
-                        //   navigate("/company", {
-                        //     state: { isBookingApp: true },
-                        //   });
-                        // } else {
-                        navigate(`/product/${product.id}`, {
-                          state: { id: product.id },
-                        });
-                        // }
-                      }}
+
                     >
                       <div className="product-box">
                         <div
+                          onClick={() => {
+                            navigate(`/product/${product.id}`, {
+                              state: { id: product.id },
+                            });
+                          }}
                           className="product-box__img"
                           style={{ backgroundImage: `url(${product.image})` }}
                         >
