@@ -1,5 +1,5 @@
 .filter {
-  display: flex;
+  flex-direction: row !important;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -20,7 +20,7 @@
 }
 
 .filter .searchWrapper {
-  width: 200px;
+  /* width: 200px; */
   display: flex;
   align-items: center;
 

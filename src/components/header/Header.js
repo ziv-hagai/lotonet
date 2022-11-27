@@ -161,25 +161,7 @@ const Header = ({ isMap, mapSearch }) => {
     }
   };
 
-  // const sizeList = [
-  //   { size: "X", value: "x", id: 1 },
-  //   { size: "S", value: "s", id: 2 },
-  //   { size: "M", value: "m", id: 3 },
-  //   { size: "L", value: "l", id: 4 },
-  //   { size: "Xl", value: "xl", id: 5 },
-  //   { size: "XXL", value: "xxl", id: 5 },
-  // ];
-  //
-  // const colorList = [
-  //   { code: "#ffffff", value: "white" },
-  //   { code: "#c69c6d", value: "" },
-  //   { code: "#846dc6", value: "" },
-  //   { code: "#6dc684", value: "" },
-  //   { code: "#e76d6d", value: "" },
-  //   { code: "#c6c6c6", value: "" },
-  // ];
 
-  // const handleSizeChange = (item, i) => {};
 
   const handleLogout = () => {
     dispatch(logout(() => navigate("/")));
@@ -202,100 +184,7 @@ const Header = ({ isMap, mapSearch }) => {
                 >
                   <img src={Logo} alt="img" className="img-fluid" />
                 </span>
-                {isMenuOpen ? (
-                  <Drawer
-                    anchor="left"
-                    className="SideDrawer"
-                    open={isMenuOpen}
-                    onClose={() => setMenuOpen(false)}
-                  >
-                    <div className="SideDrawerHead">
-                      <span
-                        onClick={() => setMenuOpen(false)}
-                        className="closeBtn"
-                      >
-                        <Clear />
-                      </span>
-                      <div className="menu">
-                        <div className="menu-inner">
-                          {user && (
-                            <div className="menuHead">
-                              <div className="menuUser">
-                                {user?.profileImage && (
-                                  <span className="menuUser-img">
-                                    <img
-                                      src={user?.profileImage}
-                                      className="img-fluid"
-                                      alt="My Awesome"
-                                    />
-                                  </span>
-                                )}
-                                <div className="menuUser-title">
-                                  {(user?.firstName || "") +
-                                    " " +
-                                    (user?.lastName || "")}
-                                </div>
-                              </div>
-                              <div
-                                className="menuHead-btn"
-                              // onClick={() => history.push("/")}
-                              ></div>
-                            </div>
-                          )}
-                          <ul className="menuList">
-                            <li>
-                              <img
-                                src={profile}
-                                className="menuList-img"
-                                alt="My Awesome"
-                              />
-                              <Link
-                                to="/registerbusiness"
-                                className="nav-links"
-                                onClick={closeMobileMenu}
-                              >
-                                {t("registerBusiness")}
-                              </Link>
-                            </li>
-                            <li>
-                              <img
-                                src={profile}
-                                className="menuList-img"
-                                alt="My Awesome"
-                              />
 
-                            </li>
-
-                          </ul>
-                        </div>
-                        <div className="menuFooter">
-                          {user && (
-                            <button
-                              className="btn-gray"
-                              onClick={() => widgetHelper.open(() => navigate("/userprofile"))}
-                            >
-                              {t("myProfile")}
-                            </button>
-                          )}
-
-                          <div className="menufooterBtns">
-                            {user && (
-                              <div
-                                className="menufooterLink isLink"
-                                onClick={handleLogout}
-                              >
-                                <LogoutIcon /> {t("logout")}{" "}
-                              </div>
-                            )}
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Drawer>
-                ) : (
-                  ""
-                )}
                 <Tabs
                   value={value}
                   indicatorColor="primary"
@@ -330,134 +219,6 @@ const Header = ({ isMap, mapSearch }) => {
               <div className="headerRight">
                 <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
                   <MenuIcon />
-                </Button>
-                {/* <Button
-                  className="dropBtn d-none d-lg-flex"
-                  onClick={() => setDrawerOpen(true)}
-                >
-                  <FilterAltIcon />
-                </Button> */}
-                {isDrawerOpen ? (
-                  <Drawer
-                    anchor="right"
-                    className="SideDrawer"
-                    open={isDrawerOpen}
-                    disableRestoreFocus
-                  // onClose={() => setDrawerOpen(false)}
-                  >
-                    <div className="SideDrawerHead">
-                      <h6 className="SideDrawerTitle">{t("headerFilters")}</h6>
-                      <span
-                        onClick={() => onClose()}
-                        className="closeBtn"
-                      >
-                        {" "}
-                        <Clear />
-                      </span>
-                    </div>
-                    {productCategories?.length && <div className="filterBlock">
-                      <h6 className="filterBlockTitle">{t("category")}</h6>
-                      <Select
-                        labelId="product-category"
-                        id="product-category"
-                        value={filter?.id || ''}
-                        label="category"
-                        className="selectCategory"
-                        onChange={e => setFilter({ ...filter, id: e.target.value })}
-                      >
-                        <MenuItem value="">{t('Not selected')}</MenuItem>
-                        {productCategories.map((item) => <MenuItem value={item.id}>{item.title}</MenuItem>)}
-                      </Select>
-                    </div>}
-                    <div className="filterBlock">
-                      <h6 className="filterBlockTitle">{t("priceRange")}</h6>
-                      <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
-                      <Slider
-                        getAriaLabel={() => "Price range"}
-                        defaultValue={filter?.price || [minPrice, maxPrice]}
-                        onChangeCommitted={(e, value) => {
-                          setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
-                        }}
-                        max={maxPrice}
-                        min={minPrice}
-                        valueLabelDisplay="auto"
-                      />
-                    </div>
-                    {/*<div className="filterBlock">*/}
-                    {/*  <h6 className="filterBlockTitle">{t("size")}</h6>*/}
-                    {/*  <div className="filterBlockRow">*/}
-                    {/*    {sizeList.map((item, i) => {*/}
-                    {/*      return (*/}
-                    {/*        <span*/}
-                    {/*          className={isSizeSelected ? "active" : ""}*/}
-                    {/*          onClick={() => handleSizeChange(item, i)}*/}
-                    {/*        >*/}
-                    {/*          {t(item.value)}*/}
-                    {/*        </span>*/}
-                    {/*      );*/}
-                    {/*    })}*/}
-                    {/*  </div>*/}
-                    {/*</div>*/}
-                    {/*<div className="filterBlock">*/}
-                    {/*  <h6 className="filterBlockTitle">{t("color")}</h6>*/}
-                    {/*  <div className="colorCode">*/}
-                    {/*    {colorList.map((item, i) => {*/}
-                    {/*      return (*/}
-                    {/*        <span*/}
-                    {/*          style={{*/}
-                    {/*            background: item.code,*/}
-                    {/*            borderColor: item.code,*/}
-                    {/*          }}*/}
-                    {/*        ></span>*/}
-                    {/*      );*/}
-                    {/*    })}*/}
-                    {/*  </div>*/}
-                    {/*</div>*/}
-                    <div className="saveFilter">
-                      <Button className="blueBtn" onClick={onFilter}>{t("apply")}</Button>
-                    </div>
-                  </Drawer>
-                ) : (
-                  ""
-                )}
-
-                {/* <form
-                  className={
-                    isSearchOpen
-                      ? "search-container d-none d-lg-block active-search"
-                      : "search-container d-none d-lg-block"
-                  }
-                >
-                  <div className="search-container__btn">
-                    <SearchOutlinedIcon />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-bar"
-                    placeholder={`${t("Search")}`}
-                    className="search-container__input"
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={openSearch}
-                    value={searchText}
-                  />
-                  <div className="mic-container__btn">
-                    <MicIcon />
-                  </div>
-                </form> */}
-                <SearchResult
-                  filterProducts={filterProducts}
-                  filterStores={filterStores}
-                  isMap={isMap}
-                  mapSearch={mapSearch}
-                />
-                <Button
-                  className="dropBtn d-none d-lg-flex d-xl-none"
-                  onClick={() => {
-                    if (isSearchOpen) setSearchOpen(false);
-                    else setSearchOpen(true);
-                  }}
-                >
-                  <SearchOutlinedIcon />
                 </Button>
                 {user && (
                   <>
@@ -525,7 +286,6 @@ const Header = ({ isMap, mapSearch }) => {
                 >
                   <ShoppingCartOutlinedIcon />
                   <span className="subCountRight">{cartCount || 0}</span>
-                  {/* <span className="mainheader--cartNo">{cart.length}</span> */}
                 </div>
                 <div className="mainheader__btn mainheader__btn--cart">
                   <AccountBalanceWalletIcon
@@ -534,7 +294,6 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                   <span className="subCountRight">3</span>
-                  {/* <span className="mainheader--cartNo">{wallet.length}</span> */}
                 </div>
                 <div className="mainheader__btn mainheader__btn--cart d-none d-lg-flex">
                   <AddLocationAltIcon
@@ -543,106 +302,8 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                 </div>
-
-                {/* {!user && (
-                  <Button
-                    variant="contained"
-                    className="solidBtn d-none d-lg-block"
-                    onClick={() => widgetHelper.register(() => navigate("/register"))}
-                  >
-                    {t("startForFree")}
-                  </Button>
-                )} */}
-                {/* <LanguageSelect /> */}
                 <div className="lanSelector">
                   <LanguageSelect />
-                </div>
-              </div>
-            </div>
-            <div className="col-12 d-flex d-lg-none">
-              <div
-                className={
-                  subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
-                }
-              >
-                <form
-                  className={
-                    isSearchOpen
-                      ? "search-container active-search"
-                      : "search-container"
-                  }
-                >
-                  <div className="search-container__btn">
-                    <SearchOutlinedIcon />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-bar"
-                    placeholder={`${t("Search")}`}
-                    className="search-container__input"
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={openSearch}
-                    value={searchText}
-                  />
-                  <div className="mic-container__btn">
-                    <MicIcon />
-                  </div>
-                </form>
-                <div className="mainheader__btn mainheader__btn--cart d-flex d-lg-none">
-                  <AddLocationAltIcon
-                    onClick={() => {
-                      navigate("/map");
-                    }}
-                  />
-                </div>
-                <Button
-                  className="dropBtn d-flex d-lg-none"
-                  onClick={() => setDrawerOpen(true)}
-                >
-                  <FilterAltIcon />
-                </Button>
-                <div
-                  className="mainheader__btn mainheader__btn--cart d-flex d-lg-none"
-                  onClick={() => {
-                    if (subToggleMenu) setSubToggleMenu(false);
-                    else setSubToggleMenu(true);
-                  }}
-                >
-                  <span className="openMenu">
-                    <MenuIcon />
-                  </span>
-                  <span className="closeMenu">
-                    <CloseOutlinedIcon />
-                  </span>
-                </div>
-                <div className="responsiveSubMenu">
-                  <Tabs
-                    value={value}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    onChange={handleChange}
-                    aria-label="disabled tabs example"
-                    className="MainMenu"
-                  >
-                    <Tab
-                      label={t("home")}
-                      onClick={() => {
-                        navigate("/");
-                      }}
-                    />
-                    <Tab
-                      label={t("stores")}
-                      onClick={() => {
-                        navigate("/allvendors");
-                      }}
-                    />
-                    <Tab
-                      label={t("categories")}
-                      onClick={() => {
-                        navigate("/categorylist");
-                      }}
-                    />
-                  </Tabs>
                 </div>
               </div>
             </div>
