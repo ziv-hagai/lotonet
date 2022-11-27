@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import FormControl from "@mui/material/FormControl";
+import { FormGroup, TextField } from '@mui/material';
+
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Button } from "@material-ui/core";
@@ -52,103 +54,101 @@ export default function AllCoupons({ filterProducts }) {
       <ul className="product-Module">
         {filterProducts.length > 0
           ? currentFilterProducts.map((product) => (
-              <>
-                <li className="product-Module__list isLink">
-                  <div className="product-box">
-                    <div
-                      onClick={() => {
-                        navigate(`/product/${product.id}`, {
-                          state: { id: product.id },
-                        });
-                      }}
-                      className="product-box__img"
-                      style={{ backgroundImage: `url(${product.image})` }}
-                    >
-                      <div className="product-box__likeBtn">
-                        <FavoriteBorderOutlinedIcon
-                          onClick={() => handleFavChange()}
-                        />
-                      </div>
-                      {product?.discount && (
-                        <div className="product-box__discount">
-                          <span className="product-box__off">
-                            {product.discountType ? "" : "-"}
-                            {product.discount}
-                            {product.discountType}
-                          </span>
-                        </div>
-                      )}
+            <>
+              <li className="product-Module__list isLink">
+                <div className="product-box">
+                  <div
+                    onClick={() => {
+                      navigate(`/product/${product.id}`, {
+                        state: { id: product.id },
+                      });
+                    }}
+                    className="product-box__img"
+                    style={{ backgroundImage: `url(${product.image})` }}
+                  >
+                    <div className="product-box__likeBtn">
+                      <FavoriteBorderOutlinedIcon
+                        onClick={() => handleFavChange()}
+                      />
                     </div>
-                    <div className="product-box__info">
-                      <div className="product-box__infoTop">
-                        <div className="top-div">
-                          <h6 className="product-box__brand">
-                            {product.title}
-                          </h6>
-                          <span className="product-box__price">
-                            {/* {product?.oldPrice && (
-                                <>
-                                  <s>{product.oldPrice}₪</s>&nbsp;
-                                </>
-                              )} */}
-                            {product?.price || 0}₪
-                            {product?.credit && (
-                              <>
-                                {" "}
-                                + <br></br> {product.credit} e-credits
-                              </>
-                            )}
-                          </span>
-                          <span>
-                            <input
-                              className="price-input"
-                              placeholder="price"
-                            ></input>
-                          </span>
-                        </div>
-                        <div className="voucherBtns">
-                          <Button
-                            variant="outlined"
-                            onClick={() => {
-                              // navigate("/bookingcartdetail");
-                            }}
-                          >
-                            לרכישה{" "}
-                          </Button>
-                          <FormControl size="small" sx={{ minWidth: 50 }}>
-                            <Select
-                              autoWidth
-                              value={num}
-                              displayEmpty
-                              inputProps={{ "aria-label": "Without label" }}
-                              InputLabelProps={{ shrink: false }}
-                              onChange={handleSelect}
-                            >
-                              <MenuItem value="">
-                                <em>None</em>
-                              </MenuItem>
-                              <MenuItem value={1}>1</MenuItem>
-                              <MenuItem value={2}>2</MenuItem>
-                              <MenuItem value={3}>3</MenuItem>
-                              <MenuItem value={4}>4</MenuItem>
-                              <MenuItem value={5}>5</MenuItem>
-                              <MenuItem value={6}>6</MenuItem>
-                              <MenuItem value={7}>7</MenuItem>
-                              <MenuItem value={8}>8</MenuItem>
-                              <MenuItem value={9}>9</MenuItem>
-                            </Select>
-                          </FormControl>
-                        </div>
+                    {product?.discount && (
+                      <div className="product-box__discount">
+                        <span className="product-box__off">
+                          {product.discountType ? "" : "-"}
+                          {product.discount}
+                          {product.discountType}
+                        </span>
                       </div>
-                    </div>
-                    {/*<h5 className="product-box__name">*/}
-                    {/*  3 {t("boxSimple")}{" "}*/}
-                    {/*</h5>*/}
-                    {/* </div> */}
+                    )}
                   </div>
-                </li>
-              </>
-            ))
+                  <div className="product-box__info">
+                    <div className="product-box__infoTop">
+                      <h6 className="product-box__brand">
+                        {product.title}
+                      </h6>
+                      {/* <span className="product-box__price"> */}
+                      {product.price > 50 ?
+                        (<div>{product.price} ₪</div>)
+                        :
+                        (<>
+                          ₪
+                          <FormControl
+                            sx={{ maxWidth: 80 }}        >
+                            <TextField
+                              size="small"
+                              type="text"
+                              id="search-bar"
+                              // sx={{ background: "#f9f9f9" }}
+                              placeholder="סכום"
+                            // onChange={(e) => setSearchText(e.target.value)}
+                            // value={searchText}
+                            />
+                          </FormControl>
+
+
+                        </>)
+                      }
+                      {/* </span> */}
+
+
+                      <FormControl size="small" sx={{ minWidth: 60 }}>
+                        <Select
+                          autoWidth
+                          value={num}
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                          InputLabelProps={{ shrink: false }}
+                          onChange={handleSelect}
+                        >
+                          <MenuItem value="">
+                            <em>None</em>
+                          </MenuItem>
+                          <MenuItem value={1}>1</MenuItem>
+                          <MenuItem value={2}>2</MenuItem>
+                          <MenuItem value={3}>3</MenuItem>
+                          <MenuItem value={4}>4</MenuItem>
+                          <MenuItem value={5}>5</MenuItem>
+                          <MenuItem value={6}>6</MenuItem>
+                          <MenuItem value={7}>7</MenuItem>
+                          <MenuItem value={8}>8</MenuItem>
+                          <MenuItem value={9}>9</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <Button
+                        variant="outlined"
+                        onClick={() => {
+                          // navigate("/bookingcartdetail");
+                        }}
+                      >
+                        לרכישה{" "}
+                      </Button>
+                    </div>
+                  </div>
+
+                </div>
+              </li>
+            </>
+          ))
           : t("No products")}
       </ul>
     </>
