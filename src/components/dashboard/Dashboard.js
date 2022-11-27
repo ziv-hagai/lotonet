@@ -12,9 +12,10 @@ import {
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import { Button } from "@material-ui/core";
-import { OutlinedInput } from '@mui/material';
+import { OutlinedInput } from "@mui/material";
+import AllCoupons from "./coupon/coupon";
 
 // import ChatBot from "../chat/ChatBot";
 import Header from "../header/Header";
@@ -62,7 +63,7 @@ if (screenWidth > 991) {
 export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [BalanceTitleFont, setBalanceTitleFont] = useState('10vw');
+  const [BalanceTitleFont, setBalanceTitleFont] = useState("10vw");
   const [num, setNum] = useState(1);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -232,8 +233,10 @@ export default function Dashboard() {
 
   const ref = useRef(null);
   useEffect(() => {
-    console.log('width', ref.current ? ref.current.offsetWidth : 0);
-    ref.current.offsetWidth < 500 ? setBalanceTitleFont('67px') : console.log(1);
+    console.log("width", ref.current ? ref.current.offsetWidth : 0);
+    ref.current.offsetWidth < 500
+      ? setBalanceTitleFont("67px")
+      : console.log(1);
     // ref.current.offsetWidth < 500 ? setCategoriesSlidesPerView(1) : console.log(1);
   }, [ref.current]);
   // console.log(filterProducts);
@@ -246,7 +249,7 @@ export default function Dashboard() {
       <div className="dashboard-tamplate">
         <Header />
 
-        <div className="container" ref={ref} >
+        <div className="container" ref={ref}>
           <div
             className="balanceBox"
             style={{
@@ -254,10 +257,7 @@ export default function Dashboard() {
             }}
           >
             <div className="balanceBoxInner">
-              <h1
-                className="headTitle"
-                style={{ fontSize: BalanceTitleFont }}
-              >
+              <h1 className="headTitle" style={{ fontSize: BalanceTitleFont }}>
                 {/* MallClub */}
               </h1>
               {/* <p className="balanceBoxTitle">{t("yourBalance")}</p> */}
@@ -343,108 +343,8 @@ export default function Dashboard() {
           {/*</ScrollingCarousel>*/}
 
           <div className="product-block">
-            <ul className="product-Module">
-              {filterProducts.length > 0
-                ? currentFilterProducts.map((product) => (
-                  <>
-                    <li
-                      className="product-Module__list isLink"
+            <AllCoupons filterProducts={filterProducts} />
 
-                    >
-                      <div className="product-box">
-                        <div
-                          onClick={() => {
-                            navigate(`/product/${product.id}`, {
-                              state: { id: product.id },
-                            });
-                          }}
-                          className="product-box__img"
-                          style={{ backgroundImage: `url(${product.image})` }}
-                        >
-                          <div className="product-box__likeBtn">
-                            <FavoriteBorderOutlinedIcon
-                              onClick={() => handleFavChange()}
-                            />
-                          </div>
-                          {product?.discount && (
-                            <div className="product-box__discount">
-                              <span className="product-box__off">
-                                {product.discountType ? "" : "-"}
-                                {product.discount}
-                                {product.discountType}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        <div className="product-box__info">
-                          <div className="product-box__infoTop">
-                            <h6 className="product-box__brand">
-                              {product.title}
-                            </h6>
-                            <span className="product-box__price">
-                              {/* {product?.oldPrice && (
-                                <>
-                                  <s>{product.oldPrice}₪</s>&nbsp;
-                                </>
-                              )} */}
-                              {product?.price || 0}₪
-                              {product?.credit && (
-                                <>
-                                  {" "}
-                                  + <br></br> {product.credit} e-credits
-                                </>
-                              )}
-                            </span>
-                            <div className="voucherBtns">
-
-                              <Button
-                                variant="outlined"
-
-                                onClick={() => {
-                                  // navigate("/bookingcartdetail");
-                                }}
-                              >
-                                לרכישה                              </Button>
-                              <FormControl
-                                size="small"
-                                sx={{ minWidth: 50 }}
-                              >
-                                <Select
-                                  autoWidth
-                                  value={num}
-                                  displayEmpty
-                                  inputProps={{ 'aria-label': 'Without label', }}
-                                  InputLabelProps={{ shrink: false }}
-                                  onChange={handleSelect}
-                                >
-                                  <MenuItem value="">
-                                    <em>None</em>
-                                  </MenuItem>
-                                  <MenuItem value={1}>1</MenuItem>
-                                  <MenuItem value={2}>2</MenuItem>
-                                  <MenuItem value={3}>3</MenuItem>
-                                  <MenuItem value={4}>4</MenuItem>
-                                  <MenuItem value={5}>5</MenuItem>
-                                  <MenuItem value={6}>6</MenuItem>
-                                  <MenuItem value={7}>7</MenuItem>
-                                  <MenuItem value={8}>8</MenuItem>
-                                  <MenuItem value={9}>9</MenuItem>
-                                </Select>
-                              </FormControl>
-
-                            </div>
-                          </div>
-                        </div>
-                        {/*<h5 className="product-box__name">*/}
-                        {/*  3 {t("boxSimple")}{" "}*/}
-                        {/*</h5>*/}
-                        {/* </div> */}
-                      </div>
-                    </li>
-                  </>
-                ))
-                : t("No products")}
-            </ul>
             {/* <ChatBot /> */}
             <Pagination
               productsPerPage={productsPerPage}
