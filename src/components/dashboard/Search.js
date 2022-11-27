@@ -13,14 +13,17 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 // import StorefrontIcon from "@mui/icons-material/Storefront";
-import Drawer from "@mui/material/Drawer";
-import Slider from "@mui/material/Slider";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Button from "@mui/material/Button";
+
+
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MenuItem, Select } from "@material-ui/core";
+import { Slider } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { FormGroup, TextField } from '@mui/material';
+
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -53,6 +56,9 @@ const Search = ({ isMap, mapSearch }) => {
   const [value, setValue] = useState(tabbingValue);
   const [click, setClick] = useState(false); // eslint-disable-line
   const [filter, setFilter] = useState({});
+  const [area, setArea] = useState("אזור");
+  const [city, setCity] = useState("ישוב");
+  const [category, setCategory] = useState("קטגוריה");
 
   const [products, setProducts] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
@@ -167,186 +173,132 @@ const Search = ({ isMap, mapSearch }) => {
   };
 
   return (
-    // <div className={isMenuOpen ? "mainheader active-menu" : "mainheader"}>
-    // <div className="container-fluid">
-    <div
-    // className="row align-items-center"
-    >
-
-      <div
-      // className="col-lg-9 col-10 "
-      >
-        <div
-        // className="headerRight"
-        >
-          {/* <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
-                  <MenuIcon />
-                </Button> */}
-
-          <div className="filter">
-            {/* <div
-              className="SideDrawerHead"
-            >
-              <h6 className="SideDrawerTitle">{t("headerFilters")}</h6>
-              <span
-                onClick={() => onClose()}
-                className="closeBtn"
-              >
-                {" "}
-              </span>
-            </div> */}
-            {/* {productCategories?.length && <div className="filterBlock">
-              <h6 className="filterBlockTitle">{t("category")}</h6>
-              <Select
-                labelId="product-category"
-                id="product-category"
-                value={filter?.id || ''}
-                label="category"
-                className="selectCategory"
-                onChange={e => setFilter({ ...filter, id: e.target.value })}
-              >
-                <MenuItem value="">{t('Not selected')}</MenuItem>
-                {productCategories.map((item) => <MenuItem value={item.id}>{item.title}</MenuItem>)}
-              </Select>
-            </div>} */}
-            <div className="filterBlock">
-              <h6 className="filterBlockTitle">{t("priceRange")}</h6>
-              <div className="priceSlider">
-                <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
-                <Slider
-                  // getAriaLabel={() => "Price range"}
-                  defaultValue={filter?.price || [minPrice, maxPrice]}
-                  onChangeCommitted={(e, value) => {
-                    setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
-                  }}
-                  max={maxPrice}
-                  min={minPrice}
-                  valueLabelDisplay="auto"
-                />
-              </div>
-            </div>
 
 
-            {/* </div> */}
+    <div className="search"    >
+      {/* <div className="filter"    > */}
+      <FormGroup className="filter">
 
-            <div className="searchWrapper">
-              <form
-                className={
-                  isSearchOpen
-                    ? "search-container d-none d-lg-block active-search"
-                    : "search-container d-none d-lg-block"
-                }
-              >
-                <div className="search-container__btn">
-                  <SearchOutlinedIcon />
-                </div>
-                <input
-                  type="text"
-                  id="search-bar"
-                  placeholder={`${t("Search")}`}
-                  className="search-container__input"
-                  onChange={(e) => setSearchText(e.target.value)}
-                  onClick={openSearch}
-                  value={searchText}
-                />
-                <div className="mic-container__btn">
-                  <MicIcon />
-                </div>
-              </form>
-            </div>
-
-            <SearchResult
-              filterProducts={filterProducts}
-              filterStores={filterStores}
-              isMap={isMap}
-              mapSearch={mapSearch}
-            />
-            <Button
-              className="dropBtn d-none d-lg-flex d-xl-none"
-              onClick={() => {
-                if (isSearchOpen) setSearchOpen(false);
-                else setSearchOpen(true);
+        <div className="filterBlock">
+          <h6 className="filterBlockTitle">{t("priceRange")}</h6>
+          <div className="priceSlider">
+            <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
+            <Slider
+              defaultValue={filter?.price || [minPrice, maxPrice]}
+              onChangeCommitted={(e, value) => {
+                setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
               }}
-            >
-              <SearchOutlinedIcon />
-            </Button>
-            <div className="saveFilter">
-              <Button className="blueBtn" onClick={onFilter}>{t("apply")}</Button>
-            </div>
+              max={maxPrice}
+              min={minPrice}
+              valueLabelDisplay="auto"
+              sx={{ color: "var(--primary)" }}
 
+            />
           </div>
         </div>
-        <div className="col-12 d-flex d-lg-none">
-          <div
-            className={
-              subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
-            }
-          >
-            <form
-              className={
-                isSearchOpen
-                  ? "search-container active-search"
-                  : "search-container"
-              }
+        <div className="searchWrapper">
+          {/* <FormControl
+              size="small"
+              sx={{ minWidth: 50 }}
             >
-              <div className="search-container__btn">
-                <SearchOutlinedIcon />
-              </div>
-              <input
-                type="text"
-                id="search-bar"
-                placeholder={`${t("Search")}`}
-                className="search-container__input"
-                onChange={(e) => setSearchText(e.target.value)}
-                onClick={openSearch}
-                value={searchText}
-              />
-              <div className="mic-container__btn">
-                <MicIcon />
-              </div>
-            </form>
-
-            <Button
-              className="dropBtn d-flex d-lg-none"
-              onClick={() => setDrawerOpen(true)}
-            >
-              <FilterAltIcon />
-            </Button>
-
-            <div className="responsiveSubMenu">
-              <Tabs
-                value={value}
-                indicatorColor="primary"
-                textColor="primary"
-                onChange={handleChange}
-                aria-label="disabled tabs example"
-                className="MainMenu"
+              <Select
+                autoWidth
+                value={num}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label', }}
+                InputLabelProps={{ shrink: false }}
+                onChange={handleSelect}
               >
-                <Tab
-                  label={t("home")}
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                />
-                <Tab
-                  label={t("stores")}
-                  onClick={() => {
-                    navigate("/allvendors");
-                  }}
-                />
-                <Tab
-                  label={t("categories")}
-                  onClick={() => {
-                    navigate("/categorylist");
-                  }}
-                />
-              </Tabs>
-            </div>
-          </div>
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={1}>1</MenuItem>
+              </Select>
+            </FormControl> */}
+
+
+          <FormControl          >
+            <TextField
+              type="text"
+              id="search-bar"
+              sx={{ background: "#f9f9f9" }}
+              placeholder={`${t("Search")}`}
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
+            />
+          </FormControl>
+
+          <FormControl
+            sx={{ m: 1, minWidth: 120 }}         >
+            <Select
+              displayEmpty
+              InputLabelProps={{ shrink: false }}
+              autoWidth
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ background: "#f9f9f9" }}
+              onChange={(e) => setArea(e.target.value)
+              }
+              value={area}
+            >
+              <MenuItem value="אזור">אזור</MenuItem>
+              <MenuItem value="צפון "> צפון</MenuItem>
+              <MenuItem value="גוש דן "> גוש דן</MenuItem>
+              <MenuItem value="ירושלים">  ירושלים</MenuItem>
+              <MenuItem value="דרום "> דרום</MenuItem>
+
+            </Select>
+          </FormControl>
+
+          <FormControl
+            sx={{ m: 1, minWidth: 120 }}         >
+            <Select
+              displayEmpty
+              InputLabelProps={{ shrink: false }}
+              autoWidth
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ background: "#f9f9f9", direction: "ltr" }}
+              onChange={(e) => setCity(e.target.value)
+              }
+              value={city}
+            >
+              <MenuItem value="ישוב">ישוב</MenuItem>
+
+            </Select>
+          </FormControl>
+          <FormControl
+            sx={{ m: 1, minWidth: 120 }}         >
+            <Select
+              displayEmpty
+              InputLabelProps={{ shrink: false }}
+              autoWidth
+              inputProps={{ 'aria-label': 'Without label' }}
+              sx={{ background: "#f9f9f9", direction: "ltr" }}
+              onChange={(e) => setCategory(e.target.value)
+              }
+              value={category}
+            >
+              <MenuItem value="קטגוריה">קטגוריה</MenuItem>
+
+            </Select>
+          </FormControl>
         </div>
-      </div >
+
+
+        <div className="searchWrapper"        >
+          <Button
+            variant="contained"
+            // className="blueBtn"
+
+            sx={{ m: 1, minHeight: 56, background: "var(--primary)" }}
+            size="large"
+            onClick={onFilter}
+          >
+            {t("apply")}
+          </Button>
+        </div>
+      </FormGroup>
+
     </div >
-    // </div>
   );
 };
 
