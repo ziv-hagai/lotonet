@@ -14,7 +14,6 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 // import StorefrontIcon from "@mui/icons-material/Storefront";
 
-
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Slider } from "@material-ui/core";
@@ -22,15 +21,19 @@ import { Button } from "@material-ui/core";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { FormGroup, TextField } from '@mui/material';
+import { FormGroup, TextField } from "@mui/material";
 
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import LanguageSelect from "../language/languageSelect";
-import { setGetTabbingValue, logout, setProductCategoryFilter } from "../../redux/actions-exporter";
+import {
+  setGetTabbingValue,
+  logout,
+  setProductCategoryFilter,
+} from "../../redux/actions-exporter";
 import SearchResult from "../searchResult/SearchResult";
-import widgetHelper from "../../helpers/widget"
+import widgetHelper from "../../helpers/widget";
 
 import profile from "../../assets/icons/profile.svg";
 // import groupChat from "../../assets/icons/group-chat.svg";
@@ -68,7 +71,9 @@ const Search = ({ isMap, mapSearch }) => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [filterStores, setFilterStores] = useState([]);
 
-  const productCategories = useSelector((state) => state.productCategories.originalProductCategories);
+  const productCategories = useSelector(
+    (state) => state.productCategories.originalProductCategories
+  );
   const merchants = useSelector((state) => state.merchant.merchants);
   // const x = useSelector((state) => state);
 
@@ -93,20 +98,20 @@ const Search = ({ isMap, mapSearch }) => {
 
   useEffect(() => {
     if (products.length) {
-      const prices = []
-      products.forEach(product => {
+      const prices = [];
+      products.forEach((product) => {
         if (product?.price) {
-          prices.push(parseFloat(product.price))
+          prices.push(parseFloat(product.price));
         }
-      })
+      });
 
       if (prices.length) {
-        prices.sort((a, b) => a - b)
-        setMinPrice(prices[0])
-        setMaxPrice(prices[prices.length - 1])
+        prices.sort((a, b) => a - b);
+        setMinPrice(prices[0]);
+        setMaxPrice(prices[prices.length - 1]);
       }
     }
-  }, [products])
+  }, [products]);
 
   useEffect(() => {
     const filteredP = products.filter((product) =>
@@ -152,13 +157,13 @@ const Search = ({ isMap, mapSearch }) => {
   const closeMobileMenu = () => setClick(false);
 
   const onFilter = (e) => {
-    console.log(filter)
+    console.log(filter);
     dispatch(setProductCategoryFilter(filter));
-  }
+  };
   const onClose = (e) => {
-    setDrawerOpen(false)
+    setDrawerOpen(false);
     dispatch(setProductCategoryFilter({}));
-  }
+  };
   const handlenotification = () => {
     if (!notification) {
       setNotification(true);
@@ -173,26 +178,30 @@ const Search = ({ isMap, mapSearch }) => {
   };
 
   return (
-
-
-    <div className="search"    >
+    <div className="search">
       {/* <div className="filter"    > */}
       <FormGroup className="filter">
-
         <div className="filterBlock">
           <h6 className="filterBlockTitle">{t("priceRange")}</h6>
           <div className="priceSlider">
-            <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
+            <span>
+              {(filter?.price ? filter.price : [minPrice, maxPrice]).join("-")}
+            </span>
             <Slider
               defaultValue={filter?.price || [minPrice, maxPrice]}
               onChangeCommitted={(e, value) => {
-                setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
+                setFilter({
+                  ...filter,
+                  price:
+                    value[0] !== minPrice || value[1] !== maxPrice
+                      ? value
+                      : null,
+                });
               }}
               max={maxPrice}
               min={minPrice}
               valueLabelDisplay="auto"
               sx={{ color: "var(--primary)" }}
-
             />
           </div>
         </div>
@@ -216,8 +225,7 @@ const Search = ({ isMap, mapSearch }) => {
               </Select>
             </FormControl> */}
 
-
-          <FormControl          >
+          <FormControl>
             <TextField
               id="search-bar"
               sx={{ background: "#f9f9f9" }}
@@ -232,59 +240,51 @@ const Search = ({ isMap, mapSearch }) => {
           >
             <Select
               displayEmpty
+              className="selectBorder"
               InputLabelProps={{ shrink: false }}
               autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
+              inputProps={{ "aria-label": "Without label" }}
               sx={{ background: "#f9f9f9" }}
-              onChange={(e) => setArea(e.target.value)
-              }
+              onChange={(e) => setArea(e.target.value)}
               value={area}
             >
               <MenuItem value="אזור">אזור</MenuItem>
               <MenuItem value="צפון "> צפון</MenuItem>
               <MenuItem value="גוש דן "> גוש דן</MenuItem>
-              <MenuItem value="ירושלים">  ירושלים</MenuItem>
+              <MenuItem value="ירושלים"> ירושלים</MenuItem>
               <MenuItem value="דרום "> דרום</MenuItem>
-
             </Select>
           </FormControl>
 
-          <FormControl
-            sx={{ m: 1, minWidth: 120 }}         >
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               displayEmpty
               InputLabelProps={{ shrink: false }}
               autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
+              inputProps={{ "aria-label": "Without label" }}
               sx={{ background: "#f9f9f9", direction: "ltr" }}
-              onChange={(e) => setCity(e.target.value)
-              }
+              onChange={(e) => setCity(e.target.value)}
               value={city}
             >
               <MenuItem value="ישוב">ישוב</MenuItem>
-
             </Select>
           </FormControl>
-          <FormControl
-            sx={{ m: 1, minWidth: 120 }}         >
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
             <Select
               displayEmpty
               InputLabelProps={{ shrink: false }}
               autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
+              inputProps={{ "aria-label": "Without label" }}
               sx={{ background: "#f9f9f9", direction: "ltr" }}
-              onChange={(e) => setCategory(e.target.value)
-              }
+              onChange={(e) => setCategory(e.target.value)}
               value={category}
             >
               <MenuItem value="קטגוריה">קטגוריה</MenuItem>
-
             </Select>
           </FormControl>
         </div>
 
-
-        <div className="searchWrapper"        >
+        <div className="searchWrapper">
           <Button
             variant="contained"
             // className="blueBtn"
@@ -297,8 +297,7 @@ const Search = ({ isMap, mapSearch }) => {
           </Button>
         </div>
       </FormGroup>
-
-    </div >
+    </div>
   );
 };
 

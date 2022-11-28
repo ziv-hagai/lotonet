@@ -25,9 +25,13 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import LanguageSelect from "../language/languageSelect";
-import { setGetTabbingValue, logout, setProductCategoryFilter } from "../../redux/actions-exporter";
+import {
+  setGetTabbingValue,
+  logout,
+  setProductCategoryFilter,
+} from "../../redux/actions-exporter";
 import SearchResult from "../searchResult/SearchResult";
-import widgetHelper from "../../helpers/widget"
+import widgetHelper from "../../helpers/widget";
 
 import profile from "../../assets/icons/profile.svg";
 // import groupChat from "../../assets/icons/group-chat.svg";
@@ -62,7 +66,9 @@ const Header = ({ isMap, mapSearch }) => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [filterStores, setFilterStores] = useState([]);
 
-  const productCategories = useSelector((state) => state.productCategories.originalProductCategories);
+  const productCategories = useSelector(
+    (state) => state.productCategories.originalProductCategories
+  );
   const merchants = useSelector((state) => state.merchant.merchants);
   // const x = useSelector((state) => state);
 
@@ -87,20 +93,20 @@ const Header = ({ isMap, mapSearch }) => {
 
   useEffect(() => {
     if (products.length) {
-      const prices = []
-      products.forEach(product => {
+      const prices = [];
+      products.forEach((product) => {
         if (product?.price) {
-          prices.push(parseFloat(product.price))
+          prices.push(parseFloat(product.price));
         }
-      })
+      });
 
       if (prices.length) {
-        prices.sort((a, b) => a - b)
-        setMinPrice(prices[0])
-        setMaxPrice(prices[prices.length - 1])
+        prices.sort((a, b) => a - b);
+        setMinPrice(prices[0]);
+        setMaxPrice(prices[prices.length - 1]);
       }
     }
-  }, [products])
+  }, [products]);
 
   useEffect(() => {
     const filteredP = products.filter((product) =>
@@ -146,13 +152,13 @@ const Header = ({ isMap, mapSearch }) => {
   const closeMobileMenu = () => setClick(false);
 
   const onFilter = (e) => {
-    console.log(filter)
+    console.log(filter);
     dispatch(setProductCategoryFilter(filter));
-  }
+  };
   const onClose = (e) => {
-    setDrawerOpen(false)
+    setDrawerOpen(false);
     dispatch(setProductCategoryFilter({}));
-  }
+  };
   const handlenotification = () => {
     if (!notification) {
       setNotification(true);
@@ -160,8 +166,6 @@ const Header = ({ isMap, mapSearch }) => {
       setNotification(false);
     }
   };
-
-
 
   const handleLogout = () => {
     dispatch(logout(() => navigate("/")));
@@ -175,7 +179,8 @@ const Header = ({ isMap, mapSearch }) => {
           <div className="row align-items-center">
             <div className="col-lg-3 col-2">
               <div className="headerLeft">
-                <span className="userBlock-img"
+                <span
+                  className="userBlock-img"
                   onClick={() => {
                     setValue(0);
                     dispatch(setGetTabbingValue(0));
@@ -217,15 +222,22 @@ const Header = ({ isMap, mapSearch }) => {
 
             <div className="col-lg-9 col-10 text-right">
               <div className="headerRight">
-                <Button className="dropBtn" onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}>
+                <Button
+                  className="dropBtn"
+                  onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}
+                >
                   <MenuIcon />
                 </Button>
                 {user && (
                   <>
                     <Button className="dropBtn">
-                      <PersonOutline onClick={() => {
-                        widgetHelper.openProfile(() => navigate("/userprofile"))
-                      }} />
+                      <PersonOutline
+                        onClick={() => {
+                          widgetHelper.openProfile(() =>
+                            navigate("/userprofile")
+                          );
+                        }}
+                      />
                     </Button>
                     <div className="notificationBlock">
                       <Button className="dropBtn" onClick={handlenotification}>
@@ -307,6 +319,95 @@ const Header = ({ isMap, mapSearch }) => {
                 </div>
               </div>
             </div>
+            {/* Mobile */}
+            <div className="col-12 d-flex d-lg-none">
+              <div
+                className={
+                  subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
+                }
+              >
+                {/* <form
+                  className={
+                    isSearchOpen
+                      ? "search-container active-search"
+                      : "search-container"
+                  }
+                >
+                  <div className="search-container__btn">
+                    <SearchOutlinedIcon />
+                  </div>
+                  <input
+                    type="text"
+                    id="search-bar"
+                    placeholder={`${t("Search")}`}
+                    className="search-container__input"
+                    onChange={(e) => setSearchText(e.target.value)}
+                    onClick={openSearch}
+                    value={searchText}
+                  />
+                  <div className="mic-container__btn">
+                    <MicIcon />
+                  </div>
+                </form> */}
+                <div className="mainheader__btn mainheader__btn--cart d-flex d-lg-none">
+                  <AddLocationAltIcon
+                    onClick={() => {
+                      navigate("/map");
+                    }}
+                  />
+                </div>
+                {/* <Button
+                  className="dropBtn d-flex d-lg-none"
+                  onClick={() => setDrawerOpen(true)}
+                >
+                  <FilterAltIcon />
+                </Button> */}
+                <div
+                  className="mainheader__btn mainheader__btn--cart d-flex d-lg-none"
+                  onClick={() => {
+                    if (subToggleMenu) setSubToggleMenu(false);
+                    else setSubToggleMenu(true);
+                  }}
+                >
+                  <span className="openMenu">
+                    <MenuIcon />
+                  </span>
+                  <span className="closeMenu">
+                    <CloseOutlinedIcon />
+                  </span>
+                </div>
+                <div className="responsiveSubMenu">
+                  <Tabs
+                    value={value}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    onChange={handleChange}
+                    aria-label="disabled tabs example"
+                    className="MainMenu"
+                  >
+                    <Tab
+                      label={t("home")}
+                      onClick={() => {
+                        navigate("/");
+                      }}
+                    />
+                    <Tab
+                      label={t("about")}
+                      onClick={() => {
+                        // navigate("/allvendors");
+                      }}
+                    />
+                    <Tab
+                      label={t("terms")}
+                      onClick={() => {
+                        // navigate("/categorylist");
+                      }}
+                    />
+                  </Tabs>
+                </div>
+              </div>
+            </div>
+            {/* Mobile */}
           </div>
         </div>
       </div>
