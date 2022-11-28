@@ -10,6 +10,7 @@ import { FormGroup, TextField } from '@mui/material';
 
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import AllCoupons from "../dashboard/coupon/coupon";
 
 import Header from "../header/Header";
 import { addToCart } from "../../redux/API/cart/cart.action";
@@ -19,12 +20,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import ProductSearch from "./ProductSearch"
 import "swiper/swiper.min.css";
-import "../category/category.css";
-
+// import "../category/category.css";
+import "./ProductDetails.css";
 import {
   getMerchants,
   getMerchantCategories,
 } from "../../redux/actions-exporter";
+import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 
 export default function ProductDetails() {
   const location = useLocation();
@@ -65,7 +67,8 @@ export default function ProductDetails() {
       });
     }
   }, [product]); //eslint-disable-line
-
+  const handleFavChange = () => {
+  }
   merchants && console.log(merchants);
 
   return (
@@ -195,6 +198,71 @@ export default function ProductDetails() {
             </Swiper>
 
             <ProductSearch />
+
+            <ul className="store-Module">
+              {merchants.length > 0
+                ? merchants.map((store) => (
+                  <>
+                    <li className="store-Module__list isLink">
+                      <div className="store-box">
+                        <div
+                          onClick={() => {
+                            navigate(`/vendor/${store.id}`, {
+                              state: { id: store.id },
+                            });
+                          }}
+                          className="store-box__img"
+                          style={{ backgroundImage: `url(${store.image})` }}
+                        >
+                          <div className="store-box__likeBtn">
+                            <FavoriteBorderOutlinedIcon
+                              onClick={() => handleFavChange()}
+                            />
+                          </div>
+
+                        </div>
+                        <div className="store-box__info">
+                          <h6 className="store-box__brand">
+                            {store.title}
+                          </h6>
+
+                          <div className="address">
+                            {store.address + ", " + store.city}
+                          </div>
+                          <div className="phone">
+                            04-1234567
+                          </div>
+                        </div>
+
+                        <div className="store-box__infoTop">
+
+
+                          <Button
+                            sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
+
+                            variant="outlined"
+                            onClick={() => { }}
+                            fullWidth
+                          >
+                            לפרטים נוספים
+                          </Button>
+                          <Button
+                            sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
+
+                            variant="outlined"
+                            onClick={() => { }}
+                            fullWidth
+                          >
+                            לאתר החנות
+                          </Button>
+                        </div>
+
+                      </div>
+                    </li>
+                  </>
+                ))
+                : t("No products")}
+            </ul>
 
           </div>
         </div>
