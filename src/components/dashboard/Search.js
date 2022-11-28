@@ -219,7 +219,6 @@ const Search = ({ isMap, mapSearch }) => {
 
           <FormControl          >
             <TextField
-              type="text"
               id="search-bar"
               sx={{ background: "#f9f9f9" }}
               placeholder={`${t("Search")}`}
@@ -229,7 +228,8 @@ const Search = ({ isMap, mapSearch }) => {
           </FormControl>
 
           <FormControl
-            sx={{ m: 1, minWidth: 120 }}         >
+            sx={{ m: 1, minWidth: 120 }}
+          >
             <Select
               displayEmpty
               InputLabelProps={{ shrink: false }}
