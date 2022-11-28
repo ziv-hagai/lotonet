@@ -103,81 +103,85 @@ const ProductSearch = ({ isMap, mapSearch }) => {
       <FormGroup className="filter">
 
 
-        <div className="searchWrapper">
+        {/* <div className="searchWrapper"> */}
 
-          <FormControl      >
-            <TextField
-              id="search-bar"
-              sx={{ background: "#f9f9f9" }}
-              placeholder={`${t("Search")}`}
-              onChange={(e) => setSearchText(e.target.value)}
-              value={searchText}
-            />
-          </FormControl>
 
-          <FormControl
-            sx={{ m: 1, minWidth: 120 }}
+        <FormControl
+          sx={{ m: 1, maxWidth: 100 }}
+        >
+          <Select
+            displayEmpty
+            InputLabelProps={{ shrink: false }}
+            autoWidth
+            inputProps={{ 'aria-label': 'Without label' }}
+            sx={{ background: "#f9f9f9" }}
+            onChange={(e) => setArea(e.target.value)
+            }
+            value={area}
           >
-            <Select
-              displayEmpty
-              InputLabelProps={{ shrink: false }}
-              autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
-              sx={{ background: "#f9f9f9" }}
-              onChange={(e) => setArea(e.target.value)
-              }
-              value={area}
-            >
-              <MenuItem value="אזור">אזור</MenuItem>
-              <MenuItem value="צפון "> צפון</MenuItem>
-              <MenuItem value="גוש דן "> גוש דן</MenuItem>
-              <MenuItem value="ירושלים">  ירושלים</MenuItem>
-              <MenuItem value="דרום "> דרום</MenuItem>
+            <MenuItem value="אזור">אזור</MenuItem>
+            <MenuItem value="צפון "> צפון</MenuItem>
+            <MenuItem value="גוש דן "> גוש דן</MenuItem>
+            <MenuItem value="ירושלים">  ירושלים</MenuItem>
+            <MenuItem value="דרום "> דרום</MenuItem>
 
-            </Select>
-          </FormControl>
+          </Select>
+        </FormControl>
 
-          <FormControl
-            sx={{ m: 1, minWidth: 120 }}         >
-            <Select
-              displayEmpty
-              InputLabelProps={{ shrink: false }}
-              autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
-              sx={{ background: "#f9f9f9", direction: "ltr" }}
-              onChange={(e) => setKosher(e.target.value)
-              }
-              value={kosher}
-            >
-              <MenuItem value="כשרות">כשרות</MenuItem>
+        <FormControl
+          sx={{ m: 1, maxWidth: 120 }}
+        >
+          <Select
+            displayEmpty
+            InputLabelProps={{ shrink: false }}
+            autoWidth
+            inputProps={{ 'aria-label': 'Without label' }}
+            sx={{ background: "#f9f9f9", direction: "ltr" }}
+            onChange={(e) => setKosher(e.target.value)
+            }
+            value={kosher}
+          >
+            <MenuItem value="כשרות">כשרות</MenuItem>
 
-            </Select>
-          </FormControl>
-          <FormControl
-            sx={{ m: 1, minWidth: 120 }}         >
-            <Select
-              displayEmpty
-              InputLabelProps={{ shrink: false }}
-              autoWidth
-              inputProps={{ 'aria-label': 'Without label' }}
-              sx={{ background: "#f9f9f9", direction: "ltr" }}
-              onChange={(e) => setCategory(e.target.value)
-              }
-              value={category}
-            >
-              <MenuItem value="קטגוריה">קטגוריה</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl
+          sx={{ m: 1, maxWidth: 100 }}
+        >
+          <Select
+            displayEmpty
+            InputLabelProps={{ shrink: false }}
+            autoWidth
+            inputProps={{ 'aria-label': 'Without label' }}
+            sx={{ background: "#f9f9f9", direction: "ltr" }}
+            onChange={(e) => setCategory(e.target.value)
+            }
+            value={category}
+          >
+            <MenuItem value="קטגוריה">קטגוריה</MenuItem>
 
-            </Select>
-          </FormControl>
-        </div>
+          </Select>
+        </FormControl>
+        {/* </div> */}
 
 
+        <FormControl
+          sx={{ m: 1, maxWidth: 120 }}
+        >
+          <TextField
+            id="search-bar"
+            sx={{ background: "#f9f9f9" }}
+            placeholder={`${t("Search")}`}
+            onChange={(e) => setSearchText(e.target.value)}
+            value={searchText}
+          />
+        </FormControl>
 
         <div className="searchWrapper"        >
           <Button
             variant="outlined"
 
-            sx={{ m: 1, minHeight: 56 }}
+            sx={{ m: 1, height: 56, maxWidth: 80 }}
             size="large"
             onClick={() => setIsPop(!isPop)}
           >

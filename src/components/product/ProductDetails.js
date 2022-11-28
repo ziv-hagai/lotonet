@@ -75,7 +75,7 @@ export default function ProductDetails() {
     <div>
       <Header />
       <div className="productDetails">
-        <div className="container">
+        <div className="container productTop">
           <div className="row">
             <div className="col-lg-6">
               <div className="productDetails-heading">
@@ -142,6 +142,7 @@ export default function ProductDetails() {
                 </div>
               </div>
             </div>
+
             <div className="col-lg-5 offset-lg-1">
               <div className="productDetails-img">
                 <img
@@ -153,123 +154,124 @@ export default function ProductDetails() {
                 />
               </div>
             </div>
-            <div className="module-heading__link">רשתות מכבדות</div>
-
-            <Swiper
-              freeMode={true}
-              slidesPerView={"auto"}
-              spaceBetween={10}
-              speed={10000}
-              style={{ width: "auto", direction: "ltr" }}
-              autoplay=
-              {{
-                delay: -10000,
-                disableOnInteraction: false,
-                // waitForTransition: false
-              }}
-              modules={[Autoplay]}
-            >
-              {merchants.length > 0
-                ? merchants.map((item, index) => (
-                  <SwiperSlide
-                    key={index}
-                    style={{ width: "auto" }}
-                    loop={true}
-
-                    onClick={() => {
-                      navigate(`/vendor/${item.id}`, {
-                        state: { id: item.id },
-                      });
-                    }}
-                    className="categoryList__block isLink"
-                  >
-                    <div className="category-box text-center">
-                      <div className="category-box__img">
-                        <img
-                          src={item.image}
-                          className="img-fluid"
-                          alt="My Awesome"
-                        />
-                      </div>
-                      <h6 className="category-box__title">{t(item.title)}</h6>
-                    </div>
-                  </SwiperSlide>
-                ))
-                : t("No merchants")}
-            </Swiper>
-
-            <ProductSearch />
-
-            <ul className="store-Module">
-              {merchants.length > 0
-                ? merchants.map((store) => (
-                  <>
-                    <li className="store-Module__list isLink">
-                      <div className="store-box">
-                        <div
-                          onClick={() => {
-                            navigate(`/vendor/${store.id}`, {
-                              state: { id: store.id },
-                            });
-                          }}
-                          className="store-box__img"
-                          style={{ backgroundImage: `url(${store.image})` }}
-                        >
-                          <div className="store-box__likeBtn">
-                            <FavoriteBorderOutlinedIcon
-                              onClick={() => handleFavChange()}
-                            />
-                          </div>
-                          <div className="store-box__kosher">
-                            כשר למהדרין
-                          </div>
-                        </div>
-                        <div className="store-box__info">
-                          <h6 className="store-box__brand">
-                            {store.title}
-                          </h6>
-
-                          <div className="address">
-                            {store.address + ", " + store.city}
-                          </div>
-                          <div className="phone">
-                            04-1234567
-                          </div>
-                        </div>
-
-                        <div className="store-box__infoTop">
-
-
-                          <Button
-                            sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
-
-                            variant="outlined"
-                            onClick={() => { }}
-                            fullWidth
-                          >
-                            לפרטים נוספים
-                          </Button>
-                          <Button
-                            sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
-
-                            variant="outlined"
-                            onClick={() => { }}
-                            fullWidth
-                          >
-                            לאתר החנות
-                          </Button>
-                        </div>
-
-                      </div>
-                    </li>
-                  </>
-                ))
-                : t("No products")}
-            </ul>
-
           </div>
+
+          <div className="module-heading__link">רשתות מכבדות</div>
+          <Swiper
+            freeMode={true}
+            slidesPerView={"auto"}
+            spaceBetween={10}
+            speed={10000}
+            style={{ width: "auto", direction: "ltr" }}
+            autoplay=
+            {{
+              delay: -10000,
+              disableOnInteraction: false,
+              // waitForTransition: false
+            }}
+            modules={[Autoplay]}
+          >
+            {merchants.length > 0
+              ? merchants.map((item, index) => (
+                <SwiperSlide
+                  key={index}
+                  style={{ width: "auto" }}
+                  loop={true}
+
+                  onClick={() => {
+                    navigate(`/vendor/${item.id}`, {
+                      state: { id: item.id },
+                    });
+                  }}
+                  className="categoryList__block isLink"
+                >
+                  <div className="category-box text-center">
+                    <div className="category-box__img">
+                      <img
+                        src={item.image}
+                        className="img-fluid"
+                        alt="My Awesome"
+                      />
+                    </div>
+                    <h6 className="category-box__title">{t(item.title)}</h6>
+                  </div>
+                </SwiperSlide>
+              ))
+              : t("No merchants")}
+          </Swiper>
+
+          <ProductSearch />
+
+          <ul className="store-Module">
+            {merchants.length > 0
+              ? merchants.map((store) => (
+                <>
+                  <li className="store-Module__list isLink">
+                    <div className="store-box">
+                      <div
+                        onClick={() => {
+                          navigate(`/vendor/${store.id}`, {
+                            state: { id: store.id },
+                          });
+                        }}
+                        className="store-box__img"
+                        style={{ backgroundImage: `url(${store.image})` }}
+                      >
+                        <div className="store-box__likeBtn">
+                          <FavoriteBorderOutlinedIcon
+                            onClick={() => handleFavChange()}
+                          />
+                        </div>
+                        <div className="store-box__kosher">
+                          כשר למהדרין
+                        </div>
+                      </div>
+                      <div className="store-box__info">
+                        <h6 className="store-box__brand">
+                          {store.title}
+                        </h6>
+
+                        <div className="address">
+                          {store.address + ", " + store.city}
+                        </div>
+                        <div className="phone">
+                          04-1234567
+                        </div>
+                      </div>
+
+                      <div className="store-box__infoTop">
+
+
+                        <Button
+                          sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
+
+                          variant="outlined"
+                          onClick={() => { }}
+                          fullWidth
+                        >
+                          לפרטים נוספים
+                        </Button>
+                        <Button
+                          sx={{ borderColor: 'var(--primary)', color: 'var(--primary)' }}
+
+                          variant="outlined"
+                          onClick={() => { }}
+                          fullWidth
+                        >
+                          לאתר החנות
+                        </Button>
+                      </div>
+
+                    </div>
+                  </li>
+                </>
+              ))
+              : t("No products")}
+          </ul>
+
         </div>
       </div>
-    </div >
+    </div>
+    // </div >
   );
 }

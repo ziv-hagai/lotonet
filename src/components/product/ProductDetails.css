@@ -1,6 +1,11 @@
 .search-product {
   margin: 2% 0;
+}
+
+.search-product>* {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .filter {
@@ -80,6 +85,17 @@
   grid-gap: 15px;
   gap: 15px;
   width: 100%;
+}
+
+.module-heading__link {
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .store-Module {
+    grid-template-columns: 1fr;
+    padding: 2%;
+  }
 }
 
 .store-Module__list {
