@@ -1,0 +1,38 @@
+.filter {
+  flex-direction: row !important;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.filter .filterBlock {
+  display: flex;
+  border: none;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.filter .filterBlock .priceSlider {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.filter .searchWrapper {
+  /* width: 200px; */
+  display: flex;
+  align-items: center;
+
+}
+
+.filter .searchWrapper .search-container {
+  width: 100%;
+}
+
+.productDetails-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 300px;
+}
