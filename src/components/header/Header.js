@@ -222,13 +222,26 @@ const Header = ({ isMap, mapSearch }) => {
 
             <div className="col-lg-9 col-10 text-right">
               <div className="headerRight">
-                <Button
+                {/* <Button
                   className="dropBtn"
                   onClick={() => widgetHelper.openMenu(() => setMenuOpen(true))}
                 >
                   <MenuIcon />
-                </Button>
-
+                </Button> */}
+                <div
+                  className="mainheader__btn mainheader__btn--cart d-flex d-lg-none"
+                  onClick={() => {
+                    if (subToggleMenu) setSubToggleMenu(false);
+                    else setSubToggleMenu(true);
+                  }}
+                >
+                  <span className="openMenu">
+                    <MenuIcon />
+                  </span>
+                  <span className="closeMenu">
+                    <CloseOutlinedIcon />
+                  </span>
+                </div>
                 {user && (
                   <>
                     <Button className="dropBtn">
@@ -335,20 +348,7 @@ const Header = ({ isMap, mapSearch }) => {
                   subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
                 }
               >
-                <div
-                  className="mainheader__btn mainheader__btn--cart d-flex d-lg-none"
-                  onClick={() => {
-                    if (subToggleMenu) setSubToggleMenu(false);
-                    else setSubToggleMenu(true);
-                  }}
-                >
-                  <span className="openMenu">
-                    <MenuIcon />
-                  </span>
-                  <span className="closeMenu">
-                    <CloseOutlinedIcon />
-                  </span>
-                </div>
+
                 <div className="responsiveSubMenu">
                   <Tabs
                     value={value}

@@ -236,7 +236,7 @@ const Search = ({ isMap, mapSearch }) => {
           </FormControl>
 
           <FormControl
-            sx={{ m: 1, minWidth: 120 }}
+            sx={{ m: 1, maxWidth: 120 }}
           >
             <Select
               displayEmpty
@@ -256,7 +256,7 @@ const Search = ({ isMap, mapSearch }) => {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <FormControl sx={{ m: 1, maxWidth: 120 }}>
             <Select
               displayEmpty
               InputLabelProps={{ shrink: false }}
@@ -269,7 +269,7 @@ const Search = ({ isMap, mapSearch }) => {
               <MenuItem value="ישוב">ישוב</MenuItem>
             </Select>
           </FormControl>
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <FormControl sx={{ m: 1, maxWidth: 120 }}>
             <Select
               displayEmpty
               InputLabelProps={{ shrink: false }}
@@ -282,14 +282,14 @@ const Search = ({ isMap, mapSearch }) => {
               <MenuItem value="קטגוריה">קטגוריה</MenuItem>
             </Select>
           </FormControl>
-        </div>
+          {/* </div> */}
 
-        <div className="searchWrapper">
+          {/* <div className="searchWrapper"> */}
           <Button
             variant="contained"
             // className="blueBtn"
 
-            sx={{ m: 1, minHeight: 56, background: "var(--primary)" }}
+            sx={{ m: 1, minHeight: 56, background: "var(--primary)", maxWidth: 120 }}
             size="large"
             onClick={onFilter}
           >

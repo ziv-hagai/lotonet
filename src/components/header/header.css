@@ -356,14 +356,15 @@
 }
 
 .mobileSearch {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
   margin-top: 10px;
   border-top: 1px solid #eee;
   width: 100%;
-  position: relative;
+  position: relative; */
+
 }
 
 .responsiveSubMenu {
@@ -652,8 +653,7 @@
   font-family: inherit;
 }
 
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: var(--primary) !important;
 }
 
@@ -753,11 +753,13 @@
 }
 
 .userBlock-img {
-  min-width: 85px !important;
-  position: relative;
+  /* min-width: 10vh !important; */
+  /* position: relative; */
   right: 20px;
+  max-width: 50vh;
+  min-width: 50px
 }
 
-.userBlock-img > img {
+.userBlock-img>img {
   width: 100%;
 }

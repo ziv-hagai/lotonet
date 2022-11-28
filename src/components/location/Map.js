@@ -18,9 +18,14 @@ import { ReactComponent as List } from "../../assets/icons/list.svg";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import StoreIcon from "@mui/icons-material/Store";
-import { BsShop } from 'react-icons/bs';
 import { TbShirt } from 'react-icons/tb';
-import { TbBuildingSkyscraper } from 'react-icons/tb';
+import { BiRestaurant } from 'react-icons/bi';
+import { MdBeachAccess } from 'react-icons/md';
+import { BiCameraMovie } from 'react-icons/bi';
+import { BiCart } from 'react-icons/bi';
+
+
+
 import { FaRegTimesCircle } from 'react-icons/fa';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import ShopIcon from "@mui/icons-material/Shop";
@@ -103,7 +108,6 @@ function Map() {
   //  search
   useEffect(() => {
     if (categories.length) {
-      // console.log(categories);
       const prepareProduct = categories.reduce(
         (previous, current) => [
           ...previous,
@@ -138,7 +142,6 @@ function Map() {
       })
 
       addLocation = addLocation.filter((v, i, a) => a.findIndex(v2 => (v2.id === v.id)) === i)
-      // console.log(addLocation);
       setProducts(addLocation);
       setStores(merchants);
     }
@@ -199,8 +202,6 @@ function Map() {
   }
 
 
-  // console.log(filterMap.filter((item) => item.title == "Bigelectric"));
-  // console.log(filterMap);
   return (
     <>
       <Header isMap={true} mapSearch={mapSearch} />
@@ -208,17 +209,7 @@ function Map() {
         <div className="sidebarModule">
           <Dashboard />
         </div>
-        {/* <div className="mobilePageTabs">
-          <div onClick={OpenSidebar} className="MapTab">
-            <LocationOnOutlinedIcon /> {t("Map View")}
-          </div>
-          <div onClick={OpenSidebar} className="ListTab">
-            <AiOutlineUnorderedList /> {t("List View")}
-          </div>
-          <div>
-            <TurnedInNotIcon /> {t("Save Search")}
-          </div>
-        </div> */}
+
         <div className="rightModule">
           <div className="mapFilter">
             <ToggleButtonGroup
@@ -227,26 +218,14 @@ function Map() {
               color="primary"
               value={type}
               exclusive
-            // onChange={handleToggle}
             >
-              {/* <ToggleButton
-                aria-label="left aligned"
-                onClick={() => handleChange("all")}
-              >
-                {t("Whats Nearby:")}
-                {t("Whats Nearby:")}
-                <Tooltip title="All">
-                  <FilterListIcon />
-                </Tooltip>
-              </ToggleButton> */}
-
               <ToggleButton
                 aria-label="left aligned"
                 onClick={() => handleChange("product")}
                 selectedColor='grey'
                 value="product"
               >
-                <Tooltip title="Product">
+                <Tooltip title="אופנה">
                   <TbShirt />
                 </Tooltip>
               </ToggleButton>
@@ -256,8 +235,8 @@ function Map() {
                 onClick={() => handleChange("shop")}
                 value="shop"
               >
-                <Tooltip title="Shop">
-                  <BsShop />
+                <Tooltip title="נופש">
+                  <MdBeachAccess />
                 </Tooltip>
               </ToggleButton>
               <ToggleButton
@@ -265,38 +244,40 @@ function Map() {
                 onClick={() => handleChange("mall")}
                 value="mall"
               >
-                <Tooltip title="Mall">
-                  <TbBuildingSkyscraper />
+                <Tooltip title="קולנוע">
+                  <BiCameraMovie />
+                </Tooltip>
+              </ToggleButton>
+              <ToggleButton
+                aria-label="justified"
+                onClick={() => handleChange("mall")}
+                value="mall"
+              >
+                <Tooltip title="מסעדות">
+                  <BiRestaurant />
+                </Tooltip>
+              </ToggleButton>
+              <ToggleButton
+                aria-label="justified"
+                onClick={() => handleChange("mall")}
+                value="mall"
+              >
+                <Tooltip title="קניות">
+                  <BiCart />
                 </Tooltip>
               </ToggleButton>
             </ToggleButtonGroup>
 
-            {/* <ToggleButtonGroup
-              aria-label="text alignment"
-              className="mapFilterGroup"
-            >
-              <ToggleButton value="center" aria-label="centered">
-                <SearchOutlinedIcon />
-                {t("Search")}
-              </ToggleButton>
-            </ToggleButtonGroup> */}
+
+
+
+
 
             <ToggleButtonGroup
               aria-label="text alignment"
               className="mapFilterGroup"
             >
-              {/* <ToggleButton value="left" aria-label="left aligned">
-                <Grid />
-                Grid
-              </ToggleButton>
-              <ToggleButton value="center" aria-label="centered">
-                <List />
-                List
-              </ToggleButton>
-              <ToggleButton value="right" aria-label="right aligned">
-                <LocationMap />
-                Map
-              </ToggleButton> */}
+
               <ToggleButton
                 onClick={() => navigate('/')}
                 className='outMap'
@@ -310,7 +291,6 @@ function Map() {
           <div className="mainMap">
             <GoogleMapReact
               bootstrapURLKeys={{
-                // key: process?.env?.REACT_APP_GOOGLE_MAP_API_KEY,
               }}
               center={center}
               defaultZoom={12}
@@ -318,12 +298,10 @@ function Map() {
               onDrag={() => setCenter({})}
 
             >
-              {/* {console.log(filterMap)} */}
               {filterMap.length > 0 &&
                 filterMap.map((item) => {
                   return (
                     <Marker
-                      // onClick={handleOpen}
                       openInfoWindow={() => handleClickOpen(item)}
                       lat={item.longitude}
                       lng={item.latitude}
