@@ -228,6 +228,7 @@ const Header = ({ isMap, mapSearch }) => {
                 >
                   <MenuIcon />
                 </Button>
+
                 {user && (
                   <>
                     <Button className="dropBtn">
@@ -299,6 +300,13 @@ const Header = ({ isMap, mapSearch }) => {
                   <ShoppingCartOutlinedIcon />
                   <span className="subCountRight">{cartCount || 0}</span>
                 </div>
+                <div className="mainheader__btn mainheader__btn--cart d-flex d-lg-none">
+                  <AddLocationAltIcon
+                    onClick={() => {
+                      navigate("/map");
+                    }}
+                  />
+                </div>
                 <div className="mainheader__btn mainheader__btn--cart">
                   <AccountBalanceWalletIcon
                     onClick={() => {
@@ -314,6 +322,7 @@ const Header = ({ isMap, mapSearch }) => {
                     }}
                   />
                 </div>
+
                 <div className="lanSelector">
                   <LanguageSelect />
                 </div>
@@ -326,42 +335,6 @@ const Header = ({ isMap, mapSearch }) => {
                   subToggleMenu ? "mobileSearch activeSubMenu" : "mobileSearch "
                 }
               >
-                {/* <form
-                  className={
-                    isSearchOpen
-                      ? "search-container active-search"
-                      : "search-container"
-                  }
-                >
-                  <div className="search-container__btn">
-                    <SearchOutlinedIcon />
-                  </div>
-                  <input
-                    type="text"
-                    id="search-bar"
-                    placeholder={`${t("Search")}`}
-                    className="search-container__input"
-                    onChange={(e) => setSearchText(e.target.value)}
-                    onClick={openSearch}
-                    value={searchText}
-                  />
-                  <div className="mic-container__btn">
-                    <MicIcon />
-                  </div>
-                </form> */}
-                <div className="mainheader__btn mainheader__btn--cart d-flex d-lg-none">
-                  <AddLocationAltIcon
-                    onClick={() => {
-                      navigate("/map");
-                    }}
-                  />
-                </div>
-                {/* <Button
-                  className="dropBtn d-flex d-lg-none"
-                  onClick={() => setDrawerOpen(true)}
-                >
-                  <FilterAltIcon />
-                </Button> */}
                 <div
                   className="mainheader__btn mainheader__btn--cart d-flex d-lg-none"
                   onClick={() => {

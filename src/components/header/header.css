@@ -754,6 +754,8 @@
 
 .userBlock-img {
   min-width: 85px !important;
+  position: relative;
+  right: 20px;
 }
 
 .userBlock-img > img {
