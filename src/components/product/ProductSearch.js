@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { setGetTabbingValue, logout, setProductCategoryFilter } from "../../redux/actions-exporter";
 
-import "./ProductSearch.css";
+import "./ProductDetails.css";
 
 
 const ProductSearch = ({ isMap, mapSearch }) => {
@@ -99,7 +99,7 @@ const ProductSearch = ({ isMap, mapSearch }) => {
 
   return (
 
-    <div className="search"    >
+    <div className="search-product"    >
       <FormGroup className="filter">
 
 

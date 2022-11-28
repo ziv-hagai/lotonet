@@ -1,0 +1,160 @@
+.search-product {
+  margin: 2% 0;
+}
+
+.filter {
+  flex-direction: row !important;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.filter .filterBlock {
+  display: flex;
+  border: none;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.filter .filterBlock .priceSlider {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.filter .searchWrapper {
+  /* width: 200px; */
+  display: flex;
+  align-items: center;
+
+}
+
+.filter .searchWrapper .search-container {
+  width: 100%;
+}
+
+.product-stores {
+  width: 100%;
+}
+
+.productDetails-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 300px;
+}
+
+.store-box {
+  box-shadow: 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  border-radius: 15px;
+  padding: 2%;
+
+}
+
+.store-box__img {
+  width: 90%;
+  min-width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 5%;
+}
+
+.store-block {
+  margin-bottom: 50px;
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.store-Module {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  gap: 15px;
+  width: 100%;
+}
+
+.store-Module__list {
+  width: 100%;
+  margin-bottom: 25px;
+
+}
+
+.store-box__info {
+  margin: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.store-box__infoTop {
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-direction: column; */
+  align-items: center;
+  margin: 5px 15px;
+  gap: 5px;
+}
+
+.store-box__brand {
+  font-size: 16px;
+  line-height: 14px;
+  margin: 0;
+}
+
+.store-box__brand,
+.address {
+  text-align: right;
+}
+
+.addressPhone {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address,
+.phone {
+  color: #888;
+  font-size: 12px;
+}
+
+.store-box__infoTop .MuiButton-root {
+  height: 40px;
+}
+
+.store-box__name {
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  color: #555;
+}
+
+
+.store-box__likeBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #000;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  opacity: 40%;
+}
+
+.store-box__likeBtn svg {
+  height: 15px;
+  width: 15px;
+}
+
+.store-box__likeBtn svg path {
+  fill: #eee;
+}
