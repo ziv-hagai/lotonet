@@ -75,9 +75,11 @@ export default function ProductDetails() {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
+              <div className="productDetails-heading">
+                <h5 className="productDetails-title">{product.title}</h5>
+              </div>
               <div className="productDetails-info">
-                <div className="productDetails-heading">
-                  <h5 className="productDetails-title">{product.title}</h5>
+                <div className="productDetails-inputs">
 
                   {product.price > 50 ?
                     (<div>{product.price} ₪</div>)

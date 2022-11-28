@@ -26,8 +26,9 @@ const ProductSearch = ({ isMap, mapSearch }) => {
 
   const [filter, setFilter] = useState({});
   const [area, setArea] = useState("אזור");
-  const [city, setCity] = useState("ישוב");
+  const [kosher, setKosher] = useState("כשרות");
   const [category, setCategory] = useState("קטגוריה");
+  const [isPop, setIsPop] = useState(true);
 
   const [products, setProducts] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
@@ -101,23 +102,7 @@ const ProductSearch = ({ isMap, mapSearch }) => {
     <div className="search"    >
       <FormGroup className="filter">
 
-        <div className="filterBlock">
-          <h6 className="filterBlockTitle">{t("priceRange")}</h6>
-          <div className="priceSlider">
-            <span>{(filter?.price ? filter.price : [minPrice, maxPrice]).join('-')}</span>
-            <Slider
-              defaultValue={filter?.price || [minPrice, maxPrice]}
-              onChangeCommitted={(e, value) => {
-                setFilter({ ...filter, price: value[0] !== minPrice || value[1] !== maxPrice ? value : null })
-              }}
-              max={maxPrice}
-              min={minPrice}
-              valueLabelDisplay="auto"
-              sx={{ color: "var(--primary)" }}
 
-            />
-          </div>
-        </div>
         <div className="searchWrapper">
 
           <FormControl      >
@@ -160,11 +145,11 @@ const ProductSearch = ({ isMap, mapSearch }) => {
               autoWidth
               inputProps={{ 'aria-label': 'Without label' }}
               sx={{ background: "#f9f9f9", direction: "ltr" }}
-              onChange={(e) => setCity(e.target.value)
+              onChange={(e) => setKosher(e.target.value)
               }
-              value={city}
+              value={kosher}
             >
-              <MenuItem value="ישוב">ישוב</MenuItem>
+              <MenuItem value="כשרות">כשרות</MenuItem>
 
             </Select>
           </FormControl>
@@ -187,13 +172,26 @@ const ProductSearch = ({ isMap, mapSearch }) => {
         </div>
 
 
+
+        <div className="searchWrapper"        >
+          <Button
+            variant="outlined"
+
+            sx={{ m: 1, minHeight: 56 }}
+            size="large"
+            onClick={() => setIsPop(!isPop)}
+          >
+            {"לפי סדר" + " "}
+            {isPop ? "פופולריות " : " א-ב"}
+          </Button>
+        </div>
         <div className="searchWrapper"        >
           <Button
             variant="contained"
 
             sx={{ m: 1, minHeight: 56, background: "var(--primary)" }}
             size="large"
-            onClick={onFilter}
+          // onClick={onFilter}
           >
             {t("apply")}
           </Button>
