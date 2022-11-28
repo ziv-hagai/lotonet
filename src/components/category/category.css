@@ -16,9 +16,9 @@
 
 .productDetails-img img {
   width: 100%;
-  max-width: 200px;
-  max-height: 300px;
-  aspect-ratio: initial;
+  /* max-width: 200px; */
+  max-height: 200px;
+  object-fit: contain;
 }
 
 .productDetails-heading {
