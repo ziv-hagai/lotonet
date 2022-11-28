@@ -17,7 +17,7 @@ import { getProductById } from "../../redux/API/product/product.action";
 import QuantitySelector from "../quantitySelector";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
-
+import ProductSearch from "./ProductSearch"
 import "swiper/swiper.min.css";
 import "../category/category.css";
 
@@ -36,15 +36,12 @@ export default function ProductDetails() {
   const [numbersOfItems, setNumbersOfItems] = useState(1);
   const userId = useSelector((state) => state?.user?.user?.id);
   const [num, setNum] = useState(1);
-  const [FilterMerchants, setFilterMerchants] = useState([]);
 
   const merchants = useSelector((state) => state.merchant.merchants);
   const merchantCategories = useSelector(
     (state) => state.merchantCategories.merchantCategories
   );
-  useEffect(() => {
-    setFilterMerchants(merchants);
-  }, [merchants]); // eslint-disable-line
+
   useEffect(() => {
     dispatch(getMerchants());
     dispatch(getMerchantCategories());
@@ -69,7 +66,7 @@ export default function ProductDetails() {
     }
   }, [product]); //eslint-disable-line
 
-  product && console.log(product);
+  merchants && console.log(merchants);
 
   return (
     <div>
@@ -138,8 +135,6 @@ export default function ProductDetails() {
                     {product?.content || ""}
                   </p>
                 </div>
-
-
               </div>
             </div>
             <div className="col-lg-5 offset-lg-1">
@@ -154,6 +149,7 @@ export default function ProductDetails() {
               </div>
             </div>
             <div className="module-heading__link">רשתות מכבדות</div>
+
             <Swiper
               freeMode={true}
               slidesPerView={"auto"}
@@ -168,9 +164,8 @@ export default function ProductDetails() {
               }}
               modules={[Autoplay]}
             >
-
               {merchants.length > 0
-                ? FilterMerchants.map((item, index) => (
+                ? merchants.map((item, index) => (
                   <SwiperSlide
                     key={index}
                     style={{ width: "auto" }}
@@ -193,11 +188,12 @@ export default function ProductDetails() {
                       <h6 className="category-box__title">{t(item.title)}</h6>
                     </div>
                   </SwiperSlide>
-
                 ))
                 : t("No merchants")}
-
             </Swiper>
+
+            <ProductSearch />
+
           </div>
         </div>
       </div>
