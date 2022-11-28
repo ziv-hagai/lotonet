@@ -1,5 +1,6 @@
 .search-product {
   margin: 2% 0;
+  width: 100%;
 }
 
 .filter {
@@ -148,6 +149,22 @@
   justify-content: center;
   border-radius: 50%;
   opacity: 40%;
+}
+
+.store-box__kosher {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #000;
+  height: 30px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  opacity: 40%;
+  color: white;
+
 }
 
 .store-box__likeBtn svg {

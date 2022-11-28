@@ -174,6 +174,7 @@ export default function ProductDetails() {
                   <SwiperSlide
                     key={index}
                     style={{ width: "auto" }}
+                    loop={true}
 
                     onClick={() => {
                       navigate(`/vendor/${item.id}`, {
@@ -219,7 +220,9 @@ export default function ProductDetails() {
                               onClick={() => handleFavChange()}
                             />
                           </div>
-
+                          <div className="store-box__kosher">
+                            כשר למהדרין
+                          </div>
                         </div>
                         <div className="store-box__info">
                           <h6 className="store-box__brand">
